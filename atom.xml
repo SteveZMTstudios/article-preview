@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>老史尬侃 - Steve ZMT &#39;s Blog</title>
+  <title>老史尬侃（预览版）</title>
   
-  <subtitle>又名“史蒂夫ZMT”的树洞。</subtitle>
+  <subtitle>测试分支，不代表主线版本</subtitle>
   <link href="https://blog.stevezmt.top/atom.xml" rel="self"/>
   
   <link href="https://blog.stevezmt.top/"/>
