@@ -1,0 +1,117 @@
+theme_color:
+  primary: indigo
+  accent: blue
+
+notice: 
+  - "该页面尚在建设中。遇到问题请<a target='_blank' href='https://github.com/SteveZMTstudios/article-preview/issues/new/choose'>反馈给我们</a>！"
+  - "您正在访问预览版博客主题页面！"
+  - "该页面是<a href='https://blog.stevezmt.top' target='_blank'>blog.stevezmt.top</a>的不稳定副本。"
+  - "测试版博客页面可能会比主线版本有更多意想不到的问题。"
+
+
+
+favicon: /images/favicon.png
+banner: /images/banner.png
+avatar: /images/avatar.jpg@128x128.jpg
+rss: /atom.xml
+
+email: admin@stevezmt.top
+sns:
+  twitter:
+  facebook:
+  google_plus:
+  steam: https://steamcommunity.com/id/stevezmt/
+  weibo:
+  instagram:
+  tumblr:
+  github: https://github.com/stevezmtstudios/
+  linkedin:
+  zhihu: https://www.zhihu.com/people/zhang-xian-sheng-70-9
+  douban:
+  qq: tencent://message/?uin=3579946866&Menu=yes
+  wechat:
+  bilibili: https://space.bilibili.com/474130186
+  custom: https://stevezmt.top/
+
+open_graph:
+  twitter:
+  google_plus:
+  fb_admins:
+  fb_app_id:
+site_verification:
+  google:
+  baidu:
+analytics:
+  google_site_id:
+  baidu_site_id:
+  cnzz_site_id:
+
+pages:
+- name: 时间轴
+  link: /timeline
+- name: 标签云
+  link: /tagcloud
+- name: 友情链接
+  link: /friends
+
+links:
+  - name: 老史尬侃 博客主线
+    link: https://blog.stevezmt.top/
+  - name: 史蒂夫ZMT 主页
+    link: https://stevezmt.top/
+  - name: 过气项目存档
+    link: https://rip.stevezmt.top
+
+    
+
+since: 2024
+footer_text: '| 测试页面，不代表最终品质'
+license: 此页内容遵循<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" target="_blank" rel="license noopener noreferrer" style="display:inline-block;"> 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" alt=""></a>
+
+gallery:
+  fancybox_css: //cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css
+  fancybox_js: //cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js
+  jquery_js: //cdn.bootcdn.net/ajax/libs/jquery/3.3.1/jquery.min.js
+  lazyload_js: //cdn.bootcdn.net/ajax/libs/jquery_lazyload/1.9.7/jquery.lazyload.min.js
+busuanzi:
+  site: true
+  page: true
+  busuanzi_js: //busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js
+qrcode:
+  caption: 发送到手机
+  use: plugin
+  
+donate:
+  - name: 支付宝
+    link: /images/page/donate/alipay.jpg
+  - name: 微信
+    link: /images/page/donate/wechat.jpg
+  - name: B币充电
+    link: https://space.bilibili.com/474130186
+  
+search:
+  placeholder: 搜索...
+  path: /search.xml
+  use: plugin
+comment:
+  use: gitalk
+  disqus_shortname:
+  gitalk_client_id: Ov23li2IcxCrL109at0U
+  gitalk_client_secret: 6b1433f474c96a5c5a997a1de53739f6f939470a
+  gitalk_repo: article-preview
+  gitalk_owner: stevezmtstudios
+  gitalk_sid_type: uuid
+  livere_data_uid:
+  valine_leancloud_app_id:
+  valine_leancloud_app_key:
+  valine_placeholder:
+  valine_page_size:
+  valine_avatar:
+  valine_lang:
+  valine_guest_info:
+  valine_notify:
+  valine_verify:
+  valine_sid_type:
+  changyan_app_id:
+  changyan_app_key:
+  changyan_sid_type:

@@ -1,0 +1,71 @@
+name: Hexo Deploy
+
+on:
+  pull_request_target:
+    types: [closed]
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: write
+  pull-requests: write  # 添加PR权限
+
+jobs:
+  build-deploy:
+    # 只在PR被合并时执行
+    if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Setup Git
+      run: |
+        git config --global user.name 'stevezmtstudios'
+        git config --global user.email '98326195+SteveZMTstudios@users.noreply.github.com'
+
+    
+    - name: Setup SSH
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.ACTIONS_DEPLOY_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '22'  # 你可以根据需要修改 Node.js 版本
+
+    - name: Install dependencies
+      run: |
+        npm install -g hexo
+        npm install
+        npm ci
+        npm install qiniu
+      
+    - name: Install Theme dependencies
+      run: |
+        cd themes/default
+        npm install
+        cd ../..
+
+
+    - name: Verify Theme Files
+      run: |
+        if [ ! -d "themes/default/layout" ]; then
+          echo "Theme layout files are missing"
+          exit 1
+        fi
+        
+
+    - name: Clean up
+      run: npx hexo clean
+
+    - name: Generate static files
+      run: npx hexo generate --force
+
+    - name: Deploy to GitHub Pages
+      run: |
+        npx hexo deploy
