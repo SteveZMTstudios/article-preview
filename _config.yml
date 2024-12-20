@@ -177,7 +177,7 @@ mermaid:
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   - type: git
-    repo: git@github.com:SteveZMTstudios/articles.git
+    repo: git@github.com:SteveZMTstudios/article-preview.git
     branch: gh-pages
     ignore_hidden: false
     force: true
