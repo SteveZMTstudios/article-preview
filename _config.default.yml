@@ -15,7 +15,13 @@ notice:
   - "我们建议想要复刻该主题布局的用户采用这个页面上的框架。"
   - "在<a target='_blank' href='https://github.com/SteveZMTstudios/article-preview/'>Github Repo</a>查看项目代码和复刻页面！"
 
-
+pwa:
+  enable: true
+  manifest: /img/pwa/manifest.json
+  apple_touch_icon: /img/pwa/apple-touch-icon.png
+  favicon_32_32: /img/pwa/32.png
+  favicon_16_16: /img/pwa/16.png
+  mask_icon: /img/pwa/safari-pinned-tab.svg
 
 
 favicon: /images/favicon.png

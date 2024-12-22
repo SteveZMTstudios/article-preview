@@ -1,5 +1,6 @@
 博客地址：[blog-preview.stevezmt.top](https://blog-preview.stevezmt.top)
 
+参阅[博客迁移指南](https://blog.stevezmt.top/2024/12/21/fork-this-theme/)来应用主题。
 
 此为预览分支，部分功能无法使用或不可用。
 
