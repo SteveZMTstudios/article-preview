@@ -13,9 +13,10 @@
 
 ###  TODO 任务清单
 #### 待合并
- - [ ] ~~https://www.voidking.com/dev-hexo-gulp/~~
- - [ ] https://github.com/Lete114/hexo-minify
-       压缩博客体积
+ -  ~~https://www.voidking.com/dev-hexo-gulp/~~
+ -  ~~https://github.com/Lete114/hexo-minify~~
+       ~~压缩博客体积~~
+        - 存在漏洞，废弃
 
 #### 待修复
 
@@ -31,12 +32,15 @@
 
 #### 待优化
  - [ ] 优化性能分数
-   - [ ] https://vrast.cn/posts/38026/
-   - [ ] 
+   - [x] https://vrast.cn/posts/38026/
+ - [x] 优化busuanzi的加载
+   - [x] use defer
  - [x] 优化SEO(lighthouse:92)
- - [ ] 优化最佳做法
+ - [x] 优化最佳做法
 
 #### 待进一步处理
+ - [ ] 重做PWA图标
+   - [ ] https://web.dev/articles/maskable-icon
 
 #### 待废弃
  - [x] https://www.voidking.com/dev-hexo-gulp/
