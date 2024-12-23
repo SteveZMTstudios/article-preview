@@ -9,11 +9,15 @@ notice:
   - "测试版博客页面可能会比主线版本有更多意想不到的问题。"
   - "请注意，该页面可能会在任何时间被删除，或无法访问。"
   - "请不要硬链接此站点的任何页面。"
+  - "此站点不会再更新博客和有用的实质内容。请参阅<a href='https://blog.stevezmt.top' target='_blank'>blog.stevezmt.top</a>！"
   - "你可以这么理解：该站点仅用于展示外观和元素。"
   - "请不要在此站点上发布任何评论或内容（我估计那个用不了）"
   - "请通过<a target='_blank' href='https://github.com/SteveZMTstudios/article-preview/issues/new/choose'>问题报告器</a>向我们反馈问题！"
   - "我们建议想要复刻该主题布局的用户采用这个页面上的框架。"
   - "在<a target='_blank' href='https://github.com/SteveZMTstudios/article-preview/'>Github Repo</a>查看项目代码和复刻页面！"
+  - "在<a target='_blank' href='https://github.com/SteveZMTstudios/article-preview/'>Github Repo</a>给我们star⭐！"
+
+
 
 pwa:
   enable: true

@@ -1,8 +1,8 @@
 博客地址：[blog-preview.stevezmt.top](https://blog-preview.stevezmt.top)
 
-参阅[博客迁移指南](https://blog.stevezmt.top/2024/12/21/fork-this-theme/)来应用主题。
-
 此为预览分支，部分功能无法使用或不可用。
+
+博客原始代码仓库添加了一些不能被广泛引用的特性。若您希望套用博客主题，请参阅[博客迁移指南](https://blog.stevezmt.top/2024/12/21/fork-this-theme/)。
 
 此分支的预览仅针对页面和布局，博客内容和帖子不会在此更新。现有的内容为从2024年12月20日的稳定版本的快照。
 
@@ -45,7 +45,7 @@
 
 #### 待测试
 
-
+### [CHANGELOG.md](CHANGELOG.md)
 
 
 
