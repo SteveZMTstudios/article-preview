@@ -105,7 +105,7 @@ theme: default
 # lazyload image
 lazyload:
   enable: true
-  onlypost: true # optional
+  onlypost: false # optional
   loadingImg: /images/loading.gif
   isSPA: false # optional
   preloadRatio: 3 # optional, default is 1
