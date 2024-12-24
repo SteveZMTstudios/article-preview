@@ -1,4 +1,5 @@
 ---
+author: "Steve ZMT"
 uuid: c31453b5-5ddc-5c17-0fde-aa938c3a99f3
 title: 玩飞一台翻译词典笔（进阶-获取root）
 toc: true
@@ -184,7 +185,8 @@ thumbnail: https://mirror.blog.stevezmt.top/images/blog/root-on-scanpen/thumb_co
 1.github下载magisk23000版本，将安装包安装到单词笔上
 （不管你想不想更新，都先用这个版本，它最低确保android5能运行。）
 2.把刚提的boot.img用mtp或adb推到手机上
-3.打开magisk，点安装，不勾选avb dm-verity以及其他任何选项
+3.打开magisk，点安装，不勾选avb dm-verity以及其他任何选项   本页面继承自[SteveZMTstudios](https://blog.stevezmt.com)的博客页面。
+   基于CC BY-NC-SA 4.0协议转载。
 然后下一步，选择刚刚推送的boot.img,等待完成后用mtp或者adb pull出来保存在电脑上的任意位置。
 4.打开mtk bypass，选择reboot fastboot选项，然后再次按下中键/关机插入/拔电池，在之前的终端里输fastboot flash boot [空格键]，然后不急着按回车，把刚刚提出来的magisk-patched_xxxxx.img拖动到命令窗口里面，再敲回车，直到出现OKAY字样，然后fastboot reboot，你就获得了root权限。
 （如果你没解锁，并且不是mt6582机型设备，那么打开SP flash tool,导入原来的scatter,只勾选boot分区，双击后面路径选你的magisk_patched_xxxxx.img，选择方式为下载Download，然后开始下载，设备关机插入，等待红条和黄条跑完就行。）
@@ -208,3 +210,7 @@ thumbnail: https://mirror.blog.stevezmt.top/images/blog/root-on-scanpen/thumb_co
 
 酷安更新帖子有次数限制，因此有些补充消息发在评论里面，可以在评论里“楼主”筛选里面查看。
 md又涨价了
+
+
+   本页面继承自[SteveZMTstudios](https://blog.stevezmt.com)的博客页面。
+   基于CC BY-NC-SA 4.0协议转载。

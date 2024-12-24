@@ -1,4 +1,5 @@
 ---
+author: "Steve ZMT"
 uuid: 13b15467-8985-edbb-c6b1-f7eb4e3f86ba
 title: 我的朋友
 comments: false
@@ -62,7 +63,7 @@ qrcode:
 </div>
 
 ### 如何找我玩
-各位大佬想交换友链的话可以在 [issue 区](https://github.com/SteveZMTstudios/articles/issues/new/choose) 留言～
+各位大佬想交换友链的话可以在 [issue 区](https://github.com/SteveZMTstudios/article-preview/issues/new/choose) 留言～
 友链提交格式：
 ```
 "网站名称：" <name:string>
@@ -74,5 +75,6 @@ qrcode:
     <text:html>   // 您可定义希望的样式，参见/friends/index.md
 ]
 ```
-
+   本页面继承自[SteveZMTstudios](https://blog.stevezmt.com)的博客页面。
+   基于CC BY-NC-SA 4.0协议转载。
 

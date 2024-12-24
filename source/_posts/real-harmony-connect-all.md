@@ -1,4 +1,5 @@
 ---
+author: "Steve ZMT"
 uuid: 325e6742-aa8e-c5b1-d7c0-209cbc05d31a
 title: 几乎超越鸿蒙的完全互联方案
 toc: true
@@ -117,3 +118,5 @@ syncthing的配置教程也很多，你可以在你的Linux电脑上配置好syn
 这个方案的优点是几乎无感知的实现了类似鸿蒙宣传的的完全互联方案，缺点是只能限制在你自己的设备，而且有一定的延迟。
 屏幕共享和远程控制还是不是很完善，等我研究一段时间。
 
+   本页面继承自[SteveZMTstudios](https://blog.stevezmt.com)的博客页面。
+   基于CC BY-NC-SA 4.0协议转载。

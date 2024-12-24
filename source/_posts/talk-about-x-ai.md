@@ -1,4 +1,5 @@
 ---
+author: "Steve ZMT"
 uuid: 59113989-6ec8-da0c-5fbf-0fc4dc94538a
 title: 关于 x.ai 的一些看法
 date: 2024-12-01 11:54:46
@@ -246,3 +247,7 @@ A: 汤姆他爸的葬礼？这事儿和我有毛*线*关系？别他*妈的*来�
 
 去除了审查的ai还是挺吓人的。
 谁知道会不会演变成智械危机呢。
+
+
+   本页面继承自[SteveZMTstudios](https://blog.stevezmt.com)的博客页面。
+   基于CC BY-NC-SA 4.0协议转载。

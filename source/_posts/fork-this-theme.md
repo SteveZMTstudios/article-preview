@@ -1,4 +1,5 @@
 ---
+author: "Steve ZMT"
 uuid: 946ed93a-9c89-a666-737d-93fb2948eb32
 title: 主题复刻指南
 donate: true

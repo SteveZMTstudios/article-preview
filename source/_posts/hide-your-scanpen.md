@@ -1,4 +1,5 @@
 ---
+author: "Steve ZMT"
 uuid: 41980377-68a2-7104-1fa2-43d53ebb52df
 title: 如何在学校安全的玩翻译笔
 

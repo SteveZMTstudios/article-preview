@@ -1,10 +1,12 @@
 ---
+author: "Steve ZMT"
 uuid: 5e3b9d37-c90d-1712-337c-afac6a683a16
 title: 测试2
 donate: true
 toc: true
 comments: true
 date: 2024-12-24 13:56:34
+sticky: 100
 tags:
 categories:
 ---
@@ -12,6 +14,9 @@ categories:
 这是一个测试页面，用于展示各种标记、按钮、索引和引用的功能。
 
 <!--more-->
+
+   本页面继承自[SteveZMTstudios](https://blog.stevezmt.com)的博客页面。
+   基于CC BY-NC-SA 4.0协议转载。
 
 源代码：[test2-1.md](https://github.com/stevezmtstudios/article-preview/blob/main/source/_posts/test2-1.md)
 

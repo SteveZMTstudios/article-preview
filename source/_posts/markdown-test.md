@@ -1,8 +1,10 @@
 ---
+author: "Steve ZMT"
 uuid: edeba23f-67b3-6d55-a6bd-c34287c560a9
 title: Markdown 渲染测试
 donate: true
 toc: true
+sticky: 99
 comments: true
 date: 2024-12-24 18:45:59
 tags:
@@ -325,3 +327,7 @@ _.compact([0, 1, false, 2, '', 3]);
 {% link Baidu https://www.baidu.com/ Baidu %}
 
 <style>#main article .mdui-card-content hr+figure,#main article .mdui-card-content hr+figure pre,#main article .mdui-card-content hr+pre{font-family:Consolas,Courier,'Courier New',monospace;font-weight:normal;font-style:normal;font-size:1em;line-height:1.7;background-color:#383838;color:#cecece;margin:0 0 1.2em 0;padding:0;border:1px solid #383838;border-radius:4px;white-space:pre;word-wrap:break-word;overflow:hidden;overflow-x:auto;-webkit-overflow-scrolling:touch;}#main article .mdui-card-content hr+pre{padding:12px 16px;}#main article .mdui-card-content hr+figure pre{margin:0;padding:12px 10px;border:none;}#main article .mdui-card-content hr+figure code,#main article .mdui-card-content hr+pre code{font-family:inherit;font-weight:inherit;font-style:inherit;font-size:inherit;line-height:inherit;background-color:transparent;color:inherit;margin:0;padding:0;border:none;border-radius:0;}</style>
+
+
+   本页面继承自 niemingzhao.top 的博客页面。
+   基于CC BY-NC-SA 4.0协议转载。

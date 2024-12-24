@@ -1,4 +1,5 @@
 ---
+author: "Steve ZMT"
 uuid: a7a96631-691e-1bc4-9149-f53ab32c7da5
 title: 玩飞一台翻译词典笔（非root方案）
 toc: true
@@ -152,3 +153,7 @@ thumbnail: https://mirror.blog.stevezmt.top/images/blog/play-on-scanpen/thumb_co
 [链接](https://mobile.yangkeduo.com/duo_coupon_landing.html?goods_id=440355635847&pid=13436888_221973215&goods_sign=E9b2xO1zPBNLXBNhwfDchu9rOlfmjN_89g_J7rMXyru4)好记星T5英语点读笔万能扫描翻译笔电子词...
 
 （我了个豆，涨价了，刚开始69来着
+
+
+   本页面继承自[SteveZMTstudios](https://blog.stevezmt.com)的博客页面。
+   基于CC BY-NC-SA 4.0协议转载。
