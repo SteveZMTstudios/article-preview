@@ -2,7 +2,75 @@
 <html lang="<%= page.lang %>">
 <%- partial('_partial/head') %>
 <body class="mdui-appbar-with-toolbar mdui-theme-primary-<%= theme.theme_color.primary || 'indigo' %> mdui-theme-accent-<%= theme.theme_color.accent || 'pink' %>">
-  <script>var a=localStorage.getItem("mdui-theme-layout-dark");if(a){document.getElementsByTagName("body")[0].className+=" mdui-theme-layout-dark"};</script>
+  <script>var a=localStorage.getItem("mdui-theme-layout-dark");if(a){document.getElementsByTagName("body")[0].className+=" mdui-theme-layout-dark"};
+    // 拦截所有站内链接的点击
+  document.addEventListener('click', function(e) {
+    const link = e.target.closest('a');
+    if (link && link.host === window.location.host) {
+      e.preventDefault();
+      
+      // 使用 fetch 加载新页面内容
+      fetch(link.href)
+        .then(res => res.text())
+        .then(html => {
+          try {
+            // 只更新 main 标签内的内容
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html'); 
+            const newContent = doc.querySelector('#main');
+            if(!newContent) throw new Error('无法找到目标内容');
+            
+            document.querySelector('#main').innerHTML = newContent.innerHTML;
+            
+            // 更新标题和 URL
+            history.pushState({}, '', link.href);
+            document.title = doc.title;
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+            });
+
+            // 触发 DOMContentLoaded 事件
+            document.dispatchEvent(new Event('DOMContentLoaded'));
+          } catch(err) {
+            console.error('页面切换失败:', err);
+            window.location.href = link.href; // 回退到传统页面加载
+          }
+        })
+        .catch(err => {
+          console.error('页面加载失败:', err);
+          window.location.href = link.href; // 回退到传统页面加载
+        });
+    }
+  });
+
+  // 处理浏览器前进/后退
+  window.onpopstate = function() {
+    fetch(location.href)
+      .then(res => res.text())
+      .then(html => {
+        try {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          const newContent = doc.querySelector('#main');
+          if(!newContent) throw new Error('无法找到目标内容');
+          
+          document.querySelector('#main').innerHTML = newContent.innerHTML;
+          document.title = doc.title;
+          
+          // 触发 DOMContentLoaded 事件
+          document.dispatchEvent(new Event('DOMContentLoaded'));
+        } catch(err) {
+          console.error('页面切换失败:', err);
+          window.location.href = location.href; // 回退到传统页面加载
+        }
+      })
+      .catch(err => {
+        console.error('页面加载失败:', err);
+        window.location.href = location.href; // 回退到传统页面加载
+      });
+  };
+  </script>
   <script>if(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches){document.getElementsByTagName("body")[0].className+=" mdui-theme-layout-dark"};</script>
   <script>var a=localStorage.getItem("mdui-drawer-close");if(!a){document.getElementsByTagName("body")[0].className+=" mdui-drawer-body-left"};</script>
   <%- partial('_partial/header', null, {cache: !config.relative_link}) %>

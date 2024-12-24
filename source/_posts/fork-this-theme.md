@@ -65,7 +65,7 @@ hexo g == hexo generate
 2. 把source文件夹里面除CNAME文件以外的的内容全部一并删掉。
    当然如果你选择不删也可以，只是要在页面内注明： 
    ```markdown
-   本页面继承自[SteveZMTstudios](https://blog.stevezmt.com)的博客页面。
+   本页面继承自[SteveZMTstudios](https://blog.stevezmt.top)的博客页面。
    基于CC BY-NC-SA 4.0协议转载。
    ```
 3. 修改CNAME文件中的链接到你的域名，或者删掉这个文件，用`<你的用户名>.github.io`作为主页。

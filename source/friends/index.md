@@ -75,6 +75,6 @@ qrcode:
     <text:html>   // 您可定义希望的样式，参见/friends/index.md
 ]
 ```
-   本页面继承自[SteveZMTstudios](https://blog.stevezmt.com)的博客页面。
+   本页面继承自[SteveZMTstudios](https://blog.stevezmt.top)的博客页面。
    基于CC BY-NC-SA 4.0协议转载。
 

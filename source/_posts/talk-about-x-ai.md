@@ -249,5 +249,5 @@ A: 汤姆他爸的葬礼？这事儿和我有毛*线*关系？别他*妈的*来�
 谁知道会不会演变成智械危机呢。
 
 
-   本页面继承自[SteveZMTstudios](https://blog.stevezmt.com)的博客页面。
+   本页面继承自[SteveZMTstudios](https://blog.stevezmt.top)的博客页面。
    基于CC BY-NC-SA 4.0协议转载。

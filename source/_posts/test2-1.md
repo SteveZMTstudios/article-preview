@@ -15,7 +15,7 @@ categories:
 
 <!--more-->
 
-   本页面继承自[SteveZMTstudios](https://blog.stevezmt.com)的博客页面。
+   本页面继承自[SteveZMTstudios](https://blog.stevezmt.top)的博客页面。
    基于CC BY-NC-SA 4.0协议转载。
 
 源代码：[test2-1.md](https://github.com/stevezmtstudios/article-preview/blob/main/source/_posts/test2-1.md)

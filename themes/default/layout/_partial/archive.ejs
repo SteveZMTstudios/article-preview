@@ -51,6 +51,7 @@
             }
     
             function deleteWriter(element, speed, callback) {
+              if (!element) return;
               let text = element.innerHTML;
               let i = text.length;
               let askip = false;

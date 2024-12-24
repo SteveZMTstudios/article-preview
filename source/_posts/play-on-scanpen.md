@@ -155,5 +155,5 @@ thumbnail: https://mirror.blog.stevezmt.top/images/blog/play-on-scanpen/thumb_co
 （我了个豆，涨价了，刚开始69来着
 
 
-   本页面继承自[SteveZMTstudios](https://blog.stevezmt.com)的博客页面。
+   本页面继承自[SteveZMTstudios](https://blog.stevezmt.top)的博客页面。
    基于CC BY-NC-SA 4.0协议转载。
