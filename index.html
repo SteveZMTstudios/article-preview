@@ -72,6 +72,7 @@
     <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="mdui-icon material-icons" translate="no">menu</i></a>
     <a href="/" class="mdui-typo-headline">老史尬侃（预览版）</a>
     <div class="mdui-toolbar-spacer"></div>
+    
     <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: '搜索'}"><i class="mdui-icon material-icons" translate="no">search</i></a>
     <!-- Open RSS Feed --><!--
     <a href="/atom.xml" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: 'RSS'}"><i class="mdui-icon material-icons" translate="no">rss_feed</i></a> -->
@@ -85,7 +86,12 @@
           navigator.clipboard.writeText(text).then(function() {
             mdui.snackbar({
               message: '已将RSS订阅链接复制到剪贴板!',
-              position: 'right-top'
+              position: 'right-top',
+              buttonText: '好',
+              onClick: function() {
+                console.log('RSS订阅链接已复制到剪贴板!');
+                close();
+              }
             });
           }, function(err) {
             console.error('Could not copy text: ', err);
@@ -207,7 +213,7 @@
   <article class="mdui-card mdui-m-b-5">
     <div class="mdui-card-content mdui-typo mdui-ripple" id="notice-container">
       <i class="mdui-icon material-icons mdui-text-color-deep-orange" translate="no">announcement</i> 
-      <!--在<a target='_blank' href='https://github.com/SteveZMTstudios/article-preview/'>Github Repo</a>查看项目代码和复刻页面！-->
+      <!--请不要在此站点上发布任何评论或内容（我估计那个用不了）-->
       
         <span id="random-notice"></span>
         <script>
@@ -314,7 +320,7 @@
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <a href="/2024/12/21/fork-this-theme/">
       <header class="mdui-card-media mdui-ripple">
-        <img src="/images/loading.gif" data-original="/images/random/material-10.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+        <img src="/images/random/material-8.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
         <div class="mdui-card-media-covered">
           <div class="mdui-card-primary">
             <div class="mdui-card-primary-title">主题复刻指南</div>
@@ -349,7 +355,7 @@
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <a href="/2024/12/24/test2-1/">
       <header class="mdui-card-media mdui-ripple">
-        <img src="/images/loading.gif" data-original="/images/random/material-19.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+        <img src="/images/random/material-17.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
         <div class="mdui-card-media-covered">
           <div class="mdui-card-primary">
             <div class="mdui-card-primary-title">测试2</div>
@@ -380,7 +386,7 @@
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <a href="/2024/12/24/markdown-test/">
       <header class="mdui-card-media mdui-ripple">
-        <img src="/images/loading.gif" data-original="/images/random/material-18.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+        <img src="/images/random/material-4.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
         <div class="mdui-card-media-covered">
           <div class="mdui-card-primary">
             <div class="mdui-card-primary-title">Markdown 渲染测试</div>
@@ -411,7 +417,7 @@
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <a href="/2024/12/24/noise-12/">
       <header class="mdui-card-media mdui-ripple">
-        <img src="/images/loading.gif" data-original="/images/random/material-14.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+        <img src="/images/random/material-5.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
         <div class="mdui-card-media-covered">
           <div class="mdui-card-primary">
             <div class="mdui-card-primary-title">测试堆积页面34</div>
@@ -439,7 +445,7 @@
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <a href="/2024/12/24/noise-11/">
       <header class="mdui-card-media mdui-ripple">
-        <img src="/images/loading.gif" data-original="/images/random/material-8.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+        <img src="/images/random/material-9.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
         <div class="mdui-card-media-covered">
           <div class="mdui-card-primary">
             <div class="mdui-card-primary-title">测试堆积页面3</div>
@@ -467,7 +473,7 @@
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <a href="/2024/12/24/noise-10/">
       <header class="mdui-card-media mdui-ripple">
-        <img src="/images/loading.gif" data-original="/images/random/material-14.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+        <img src="/images/random/material-15.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
         <div class="mdui-card-media-covered">
           <div class="mdui-card-primary">
             <div class="mdui-card-primary-title">测试堆积页面2345678</div>
@@ -495,7 +501,7 @@
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <a href="/2024/12/24/noise-9/">
       <header class="mdui-card-media mdui-ripple">
-        <img src="/images/loading.gif" data-original="/images/random/material-19.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+        <img src="/images/random/material-17.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
         <div class="mdui-card-media-covered">
           <div class="mdui-card-primary">
             <div class="mdui-card-primary-title">测试堆积页面234567</div>
@@ -523,7 +529,7 @@
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <a href="/2024/12/24/noise-8/">
       <header class="mdui-card-media mdui-ripple">
-        <img src="/images/loading.gif" data-original="/images/random/material-11.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+        <img src="/images/random/material-15.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
         <div class="mdui-card-media-covered">
           <div class="mdui-card-primary">
             <div class="mdui-card-primary-title">测试堆积页面23456</div>
@@ -551,7 +557,7 @@
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <a href="/2024/12/24/noise-7/">
       <header class="mdui-card-media mdui-ripple">
-        <img src="/images/loading.gif" data-original="/images/random/material-16.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+        <img src="/images/random/material-6.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
         <div class="mdui-card-media-covered">
           <div class="mdui-card-primary">
             <div class="mdui-card-primary-title">测试堆积页面2345</div>
@@ -579,7 +585,7 @@
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <a href="/2024/12/24/noise-6/">
       <header class="mdui-card-media mdui-ripple">
-        <img src="/images/loading.gif" data-original="/images/random/material-5.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+        <img src="/images/random/material-12.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
         <div class="mdui-card-media-covered">
           <div class="mdui-card-primary">
             <div class="mdui-card-primary-title">测试堆积页面234</div>
@@ -661,20 +667,4 @@
   
 <script src="/custom.js"></script>
 
-
-        <style>
-            [bg-lazy] {
-                background-image: none !important;
-                background-color: #eee !important;
-            }
-        </style>
-        <script>
-            window.imageLazyLoadSetting = {
-                isSPA: false,
-                preloadRatio: 3,
-                processImages: null,
-            };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z\d\-\.\+]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(t.test(e.href)||r.test(e.href))&&(e.href=a.dataset.original)})});</script><script>(r=>{r.imageLazyLoadSetting.processImages=t;var a=r.imageLazyLoadSetting.isSPA,o=r.imageLazyLoadSetting.preloadRatio||1,d=i();function i(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(t){(a||t)&&(d=i());for(var e,n=0;n<d.length;n++)0<=(e=(e=d[n]).getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(r.innerHeight*o||document.documentElement.clientHeight*o)&&(()=>{var t,e,a,o,i=d[n];e=function(){d=d.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).dataset.loaded||(t.hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(a=new Image,o=t.getAttribute("data-original"),a.onload=function(){t.src=o,t.removeAttribute("data-original"),t.setAttribute("data-loaded",!0),e&&e()},a.onerror=function(){t.removeAttribute("data-original"),t.setAttribute("data-loaded",!1),t.src=o},t.src!==o&&(a.src=o)))})()}function e(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",e),r.addEventListener("resize",e),r.addEventListener("orientationchange",e)})(this);</script></body>
-<script defer src = 'https://cdn.bootcdn.net/ajax/libs/instantclick/3.1.0/instantclick.min.js' data-no-instant></script>
-
-</html>
+<script>"use strict";if("serviceWorker"in navigator){navigator.serviceWorker.register("service-worker.js").then((function(reg){reg.onupdatefound=function(){var installingWorker=reg.installing;installingWorker.onstatechange=function(){switch(installingWorker.state){case"installed":if(navigator.serviceWorker.controller){console.log("New or updated content is available.")}else{console.log("Content is now available offline!")}break;case"redundant":console.error("The installing service worker became redundant.");break}}}}))["catch"]((function(e){console.error("Error during service worker registration:",e)}))}</script></body></html>

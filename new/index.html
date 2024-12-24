@@ -79,6 +79,7 @@
     <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="mdui-icon material-icons" translate="no">menu</i></a>
     <a href="/" class="mdui-typo-headline">老史尬侃（预览版）</a>
     <div class="mdui-toolbar-spacer"></div>
+    
     <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: '搜索'}"><i class="mdui-icon material-icons" translate="no">search</i></a>
     <!-- Open RSS Feed --><!--
     <a href="/atom.xml" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: 'RSS'}"><i class="mdui-icon material-icons" translate="no">rss_feed</i></a> -->
@@ -92,7 +93,12 @@
           navigator.clipboard.writeText(text).then(function() {
             mdui.snackbar({
               message: '已将RSS订阅链接复制到剪贴板!',
-              position: 'right-top'
+              position: 'right-top',
+              buttonText: '好',
+              onClick: function() {
+                console.log('RSS订阅链接已复制到剪贴板!');
+                close();
+              }
             });
           }, function(err) {
             console.error('Could not copy text: ', err);
@@ -234,7 +240,7 @@
   <style>#main article .mdui-card-content .text-center{text-align:center!important}</style>
   <article class="mdui-card mdui-m-b-5">
     <header class="mdui-card-media">
-      <img src="/images/loading.gif" data-original="https://mirror.blog.stevezmt.top/images/random/material-3.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+      <img src="https://mirror.blog.stevezmt.top/images/random/material-15.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
             <div class="mdui-card-primary-title"><h1 style="margin: 0; font-size: inherit; font-weight: inherit;">创建页面</h1></div>
@@ -285,7 +291,7 @@
     </header>
     <div class="mdui-card-content mdui-typo">
       <p>构建状态：<a target="_blank" rel="noopener" href='https://github.com/SteveZMTstudios/article-preview/actions/workflows/hexo-deploy.yml'><img src='https://github.com/SteveZMTstudios/article-preview/actions/workflows/hexo-deploy.yml/badge.svg'></a><br><br>部署状态：<a target="_blank" rel="noopener" href='https://github.com/SteveZMTstudios/article-preview/actions/workflows/pages/pages-build-deployment'><img src='https://github.com/SteveZMTstudios/article-preview/actions/workflows/pages/pages-build-deployment/badge.svg'></a></p>
-<p>构建检查：<br><code>main</code>:<a target="_blank" rel="noopener" href="https://github.com/SteveZMTstudios/article-preview/actions/workflows/check-pages.yml"><img src="/images/loading.gif" data-original="https://github.com/SteveZMTstudios/article-preview/actions/workflows/check-pages.yml/badge.svg?branch=main" alt="Build Check"></a><br><br><code>SteveZMTstudios-patch-1</code>:<a target="_blank" rel="noopener" href="https://github.com/SteveZMTstudios/article-preview/actions/workflows/check-pages.yml"><img src="/images/loading.gif" data-original="https://github.com/SteveZMTstudios/article-preview/actions/workflows/check-pages.yml/badge.svg?branch=SteveZMTstudios-patch-1" alt="Build Check"></a></p>
+<p>构建检查：<br><code>main</code>:<a target="_blank" rel="noopener" href="https://github.com/SteveZMTstudios/article-preview/actions/workflows/check-pages.yml"><img src="https://github.com/SteveZMTstudios/article-preview/actions/workflows/check-pages.yml/badge.svg?branch=main" alt="Build Check"></a><br><br><code>SteveZMTstudios-patch-1</code>:<a target="_blank" rel="noopener" href="https://github.com/SteveZMTstudios/article-preview/actions/workflows/check-pages.yml"><img src="https://github.com/SteveZMTstudios/article-preview/actions/workflows/check-pages.yml/badge.svg?branch=SteveZMTstudios-patch-1" alt="Build Check"></a></p>
 <center><button class='mdui-btn mdui-btn-dense mdui-color-theme-accent mdui-ripple' onclick='(function(){function f(c,a){var b=document.createElement("a");b.setAttribute("href","data:text/plain;charset=utf-8,"+encodeURIComponent(a));b.setAttribute("download",c);b.style.display="none";document.body.appendChild(b);b.click();document.body.removeChild(b)}function h(){function a(){return(((1+Math.random())*65536)|0).toString(16).substring(1)}return(a()+a()+"-"+a()+"-"+a()+"-"+a()+"-"+a()+a()+a())}function i(d){var b=new Date();var a={"M+":b.getMonth()+1,"d+":b.getDate(),"h+":b.getHours(),"m+":b.getMinutes(),"s+":b.getSeconds(),"q+":Math.floor((b.getMonth()+3)/3),"S":b.getMilliseconds()};if(/(y+)/.test(d)){d=d.replace(RegExp.$1,(b.getFullYear()+"").substr(4-RegExp.$1.length))}for(var c in a){if(new RegExp("("+c+")").test(d)){d=d.replace(RegExp.$1,(RegExp.$1.length==1)?(a[c]):(("00"+a[c]).substr((""+a[c]).length)))}}return d}function g(a){return"---\nauthor: "Steve ZMT"
 uuid: "+h()+"\ntitle: "+a+"\ndate: "+i("yyyy-MM-dd hh:mm:ss")+"\n# author: # 作者，默认为Steve ZMT\n# top: true # 置顶文章\n\ntags:\n#    - 标签1\ncategories:\n#    - 分类1\ndonate: true # 默认启用打赏，[False|True]\n# license: # 设为 false 关闭版权声明或输入自定义版权声明 [false|<license:string>]\ntoc: true # 启用目录，[False|True]\ncomments: true # 启用评论 [False|True]\n# license: # 设为 false 关闭版权声明或输入自定义版权声明 [false|<license:string>]\n# thumbnail: # 设置文章头图,默认为随机 Material 风格图片 [<imgpath:urlstr>|<none>]\nexcerpt: # 摘要，默认为文章的前120个字符（在archive.ejs:147更改）\n# count: false # 默认启用阅读量统计，[False|True]\n# lang:  # 默认使用简体中文，[en|zh-cn]\n# layout: # 默认使用markdown布局，[custom]\n---\n"}var j=window.prompt("请输入文章题目","new-post");if(!j){return}f(j+".md",g(j));alert("模板已下载，请使用其他编辑器继续创作。");})();'>新建文章</button>&nbsp;<button class='mdui-btn mdui-btn-dense mdui-color-theme-accent mdui-ripple' onclick='window.open("https:/"+"/github.com/stevezmtstudios/article-preview/upload/main/source/_posts","_blank");'>上传文章</button>&nbsp;<br><br><button class='mdui-btn mdui-btn-dense mdui-color-theme-accent mdui-ripple' onclick='window.open("https:/"+"/github.com/stevezmtstudios/sharepoint/upload/main/_posts","_blank");'>上传附件</button>&nbsp;<button class='mdui-btn mdui-btn-dense mdui-color-theme-accent mdui-ripple' onclick='(function(){var title=window.prompt("请输入文章题目","new-post");if(title){window.open("https:/"+"/github.com/stevezmtstudios/sharepoint/upload/main/source/images/blog/"+title,"_blank");}})();'>上传图片</button></center>
 
@@ -398,20 +404,5 @@ uuid: "+h()+"\ntitle: "+a+"\ndate: "+i("yyyy-MM-dd hh:mm:ss")+"\n# author: # 作
   
 <script src="/custom.js"></script>
 
-
-        <style>
-            [bg-lazy] {
-                background-image: none !important;
-                background-color: #eee !important;
-            }
-        </style>
-        <script>
-            window.imageLazyLoadSetting = {
-                isSPA: false,
-                preloadRatio: 3,
-                processImages: null,
-            };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z\d\-\.\+]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(t.test(e.href)||r.test(e.href))&&(e.href=a.dataset.original)})});</script><script>(r=>{r.imageLazyLoadSetting.processImages=t;var a=r.imageLazyLoadSetting.isSPA,o=r.imageLazyLoadSetting.preloadRatio||1,d=i();function i(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(t){(a||t)&&(d=i());for(var e,n=0;n<d.length;n++)0<=(e=(e=d[n]).getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(r.innerHeight*o||document.documentElement.clientHeight*o)&&(()=>{var t,e,a,o,i=d[n];e=function(){d=d.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).dataset.loaded||(t.hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(a=new Image,o=t.getAttribute("data-original"),a.onload=function(){t.src=o,t.removeAttribute("data-original"),t.setAttribute("data-loaded",!0),e&&e()},a.onerror=function(){t.removeAttribute("data-original"),t.setAttribute("data-loaded",!1),t.src=o},t.src!==o&&(a.src=o)))})()}function e(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",e),r.addEventListener("resize",e),r.addEventListener("orientationchange",e)})(this);</script></body>
-<script defer src = 'https://cdn.bootcdn.net/ajax/libs/instantclick/3.1.0/instantclick.min.js' data-no-instant></script>
-
+</body>
 </html>

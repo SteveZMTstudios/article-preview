@@ -82,6 +82,7 @@
     <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="mdui-icon material-icons" translate="no">menu</i></a>
     <a href="/" class="mdui-typo-headline">老史尬侃（预览版）</a>
     <div class="mdui-toolbar-spacer"></div>
+    
     <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: '搜索'}"><i class="mdui-icon material-icons" translate="no">search</i></a>
     <!-- Open RSS Feed --><!--
     <a href="/atom.xml" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: 'RSS'}"><i class="mdui-icon material-icons" translate="no">rss_feed</i></a> -->
@@ -95,7 +96,12 @@
           navigator.clipboard.writeText(text).then(function() {
             mdui.snackbar({
               message: '已将RSS订阅链接复制到剪贴板!',
-              position: 'right-top'
+              position: 'right-top',
+              buttonText: '好',
+              onClick: function() {
+                console.log('RSS订阅链接已复制到剪贴板!');
+                close();
+              }
             });
           }, function(err) {
             console.error('Could not copy text: ', err);
@@ -237,7 +243,7 @@
   <style>#main article .mdui-card-content .text-center{text-align:center!important}</style>
   <article class="mdui-card mdui-m-b-5">
     <header class="mdui-card-media">
-      <img src="/images/loading.gif" data-original="https://mirror.blog.stevezmt.top/images/random/material-18.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+      <img src="https://mirror.blog.stevezmt.top/images/random/material-6.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
             <div class="mdui-card-primary-title"><h1 style="margin: 0; font-size: inherit; font-weight: inherit;">我</h1></div>
@@ -287,10 +293,10 @@
       </div>
     </header>
     <div class="mdui-card-content mdui-typo">
-      <p><img src="/images/loading.gif" data-original="https://readme-typing-svg.demolab.com?font=Roboto+Mono&weight=600&duration=2000&pause=1500&color=FFFFFF&background=1e242a&center=true&vCenter=true&random=false&width=420&lines=Welcome!+%F0%9F%92%9C;I+am+Steve+ZMT...;Nice+to+meet+you!;I+am+a+hobbyist+developer.;Check+out+my+website!;https%3A%2F%2Fwww.stevezmt.top" alt="Typing SVG" /></a><br></p>
-<p><a target="_blank" rel="noopener" href="https://space.bilibili.com/474130186"><img src="/images/loading.gif" data-original="https://img.shields.io/badge/dynamic/json?url=https://api.bilibili.com/x/relation/stat?vmid=474130186&query=$.data.follower&logo=bilibili&logoColor=pink&label=Bilibili%20Subscriber&color=pink" alt="bilibili">
-</a> <img src="/images/loading.gif" data-original="https://img.shields.io/badge/afdian-Not_available-white?style=plastic&logo=GitHub%20Sponsors&logoColor=white&label=afdian&labelColor=grey" alt="donate"> <a target="_blank" rel="noopener" href="https://github.com/stevezmtstudios"><img src="/images/loading.gif" data-original="https://img.shields.io/badge/dynamic/json?url=https://api.swo.moe/stats/github/stevezmtstudios&query=count&color=181717&label=GitHub&labelColor=282c34&logo=github&suffix=+follows&cacheSeconds=3600" alt="GitHub"></a> <a target="_blank" rel="noopener" href="https://www.zhihu.com/people/zhang-xian-sheng-70-9"><img src="/images/loading.gif" data-original="https://img.shields.io/badge/dynamic/json?url=https://api.swo.moe/stats/zhihu/zhang-xian-sheng-70-9&query=count&color=282c34&label=%E7%9F%A5%E4%B9%8E&labelColor=0084ff&logo=zhihu&logoColor=ffffff&suffix=+%E5%85%B3%E6%B3%A8&cacheSeconds=3600" alt="知乎"></a></p>
-<p><img src="/images/loading.gif" data-original="https://img.shields.io/github/followers/stevezmtstudios?style=for-the-badge&logo=github" alt="Failed to load badge"><br><img src="/images/loading.gif" data-original="https://komarev.com/ghpvc/?username=stevezmtstudios&style=for-the-badge&abbreviated=true&base=3188" alt="Failed to load badge"><br></p>
+      <p><img src="https://readme-typing-svg.demolab.com?font=Roboto+Mono&weight=600&duration=2000&pause=1500&color=FFFFFF&background=1e242a&center=true&vCenter=true&random=false&width=420&lines=Welcome!+%F0%9F%92%9C;I+am+Steve+ZMT...;Nice+to+meet+you!;I+am+a+hobbyist+developer.;Check+out+my+website!;https%3A%2F%2Fwww.stevezmt.top" alt="Typing SVG" /></a><br></p>
+<p><a target="_blank" rel="noopener" href="https://space.bilibili.com/474130186"><img src="https://img.shields.io/badge/dynamic/json?url=https://api.bilibili.com/x/relation/stat?vmid=474130186&query=$.data.follower&logo=bilibili&logoColor=pink&label=Bilibili%20Subscriber&color=pink" alt="bilibili">
+</a> <img src="https://img.shields.io/badge/afdian-Not_available-white?style=plastic&logo=GitHub%20Sponsors&logoColor=white&label=afdian&labelColor=grey" alt="donate"> <a target="_blank" rel="noopener" href="https://github.com/stevezmtstudios"><img src="https://img.shields.io/badge/dynamic/json?url=https://api.swo.moe/stats/github/stevezmtstudios&query=count&color=181717&label=GitHub&labelColor=282c34&logo=github&suffix=+follows&cacheSeconds=3600" alt="GitHub"></a> <a target="_blank" rel="noopener" href="https://www.zhihu.com/people/zhang-xian-sheng-70-9"><img src="https://img.shields.io/badge/dynamic/json?url=https://api.swo.moe/stats/zhihu/zhang-xian-sheng-70-9&query=count&color=282c34&label=%E7%9F%A5%E4%B9%8E&labelColor=0084ff&logo=zhihu&logoColor=ffffff&suffix=+%E5%85%B3%E6%B3%A8&cacheSeconds=3600" alt="知乎"></a></p>
+<p><img src="https://img.shields.io/github/followers/stevezmtstudios?style=for-the-badge&logo=github" alt="Failed to load badge"><br><img src="https://komarev.com/ghpvc/?username=stevezmtstudios&style=for-the-badge&abbreviated=true&base=3188" alt="Failed to load badge"><br></p>
 <p>你好。</p>
 <p>这里是 史蒂夫ZMT 。</p>
 <p>我目前是一名学生，写程序和在网上聊天是我的爱好。</p>
@@ -306,7 +312,7 @@
       
       <blockquote>
         
-          <strong>此页内容遵循<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" target="_blank" rel="license noopener noreferrer" style="display:inline-block;"> 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="/images/loading.gif" data-original="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="/images/loading.gif" data-original="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="/images/loading.gif" data-original="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="/images/loading.gif" data-original="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" alt=""></a></strong><br>
+          <strong>此页内容遵循<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" target="_blank" rel="license noopener noreferrer" style="display:inline-block;"> 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" alt=""></a></strong><br>
         
         
           <strong>本文链接：</strong><br><a href="https://blog.stevezmt.top/about/index.html">https://blog.stevezmt.top/about/index.html</a>
@@ -381,20 +387,5 @@
   
 <script src="/custom.js"></script>
 
-
-        <style>
-            [bg-lazy] {
-                background-image: none !important;
-                background-color: #eee !important;
-            }
-        </style>
-        <script>
-            window.imageLazyLoadSetting = {
-                isSPA: false,
-                preloadRatio: 3,
-                processImages: null,
-            };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z\d\-\.\+]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(t.test(e.href)||r.test(e.href))&&(e.href=a.dataset.original)})});</script><script>(r=>{r.imageLazyLoadSetting.processImages=t;var a=r.imageLazyLoadSetting.isSPA,o=r.imageLazyLoadSetting.preloadRatio||1,d=i();function i(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(t){(a||t)&&(d=i());for(var e,n=0;n<d.length;n++)0<=(e=(e=d[n]).getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(r.innerHeight*o||document.documentElement.clientHeight*o)&&(()=>{var t,e,a,o,i=d[n];e=function(){d=d.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).dataset.loaded||(t.hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(a=new Image,o=t.getAttribute("data-original"),a.onload=function(){t.src=o,t.removeAttribute("data-original"),t.setAttribute("data-loaded",!0),e&&e()},a.onerror=function(){t.removeAttribute("data-original"),t.setAttribute("data-loaded",!1),t.src=o},t.src!==o&&(a.src=o)))})()}function e(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",e),r.addEventListener("resize",e),r.addEventListener("orientationchange",e)})(this);</script></body>
-<script defer src = 'https://cdn.bootcdn.net/ajax/libs/instantclick/3.1.0/instantclick.min.js' data-no-instant></script>
-
+</body>
 </html>
