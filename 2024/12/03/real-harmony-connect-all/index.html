@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://mirror.blog.stevezmt.top/images/blog/real-harmony-connect-all/4_compressed.jpg">
 <meta property="og:image" content="https://mirror.blog.stevezmt.top/images/blog/real-harmony-connect-all/5_compressed.jpg">
 <meta property="article:published_time" content="2024-12-03T12:15:22.000Z">
-<meta property="article:modified_time" content="2024-12-24T11:19:32.911Z">
+<meta property="article:modified_time" content="2024-12-24T14:50:26.489Z">
 <meta property="article:author" content="Steve ZMT">
 <meta property="article:tag" content="开源">
 <meta property="article:tag" content="root">
@@ -73,7 +73,140 @@
 
 
 <body class="mdui-appbar-with-toolbar mdui-theme-primary-indigo mdui-theme-accent-blue">
-  <script>var a=localStorage.getItem("mdui-theme-layout-dark");if(a){document.getElementsByTagName("body")[0].className+=" mdui-theme-layout-dark"};</script>
+  <script>
+    // 模拟页面刷新时的各种事件
+    function simulatePageRefresh() {
+      // 滚动到顶部
+      window.scrollTo(0, 0);
+      
+      // 触发常见的文档事件
+      document.dispatchEvent(new Event('DOMContentLoaded'));
+      document.dispatchEvent(new Event('readystatechange'));
+      
+      // 触发窗口事件
+      window.dispatchEvent(new Event('load'));
+      window.dispatchEvent(new Event('scroll'));
+      window.dispatchEvent(new Event('resize'));
+      window.dispatchEvent(new Event('orientationchange'));
+
+      // 触发焦点相关事件
+      window.dispatchEvent(new Event('focus'));
+      document.hasFocus() && document.activeElement && document.activeElement.focus();
+      try {
+        const drawer = document.querySelector('.mdui-drawer');
+        if (drawer) {
+          const $ = mdui.$;
+          const inst = new mdui.Drawer(drawer);
+          
+          // 检查是否为移动设备
+          const isMobile = window.innerWidth < 1024; // mdui 默认断点
+          
+          // 检查本地存储中的状态
+          const isForceClose = localStorage.getItem('mdui-drawer-close');
+          
+          if (isMobile || isForceClose) {
+            // 移除所有遮罩
+            $('.mdui-overlay').remove();
+            // 关闭抽屉
+            inst.close(true); // true 表示不显示遮罩
+            // 确保移除drawer-open类
+            $('body').removeClass('mdui-drawer-body-left mdui-drawer-open');
+          }
+        }
+      } catch (err) {
+        console.warn('处理抽屉导航失败:', err);
+        alert('处理抽屉导航失败，请刷新页面');
+      }
+      
+      // 触发自定义事件用于其他脚本
+      window.dispatchEvent(new Event('page:updated'));
+      // 确保 initNoticeSystem 被正确调用
+      if (typeof window.initNoticeSystem === 'function') {
+        window.initNoticeSystem();
+      }
+        // 重置通知系统状态
+      
+  // 重置通知系统状态
+      if (localStorage.getItem('notice-system-initialized') === 'true') {
+        const noticeElement = document.getElementById('random-notice');
+        if (noticeElement && 
+            (window.location.pathname === '/' || 
+            window.location.pathname === '/index.html')) {
+          console.log('Reinitializing notice system');
+          window.initNoticeSystem();
+        }
+      }
+    
+    // 在首页时重新初始化通知系统
+    if (window.location.pathname === '/' || 
+        window.location.pathname === '/index.html') {
+      if (typeof window.initNoticeSystem === 'function') {
+        window.initNoticeSystem();
+      }
+    }
+      console.log('Page type:', window.location.pathname);
+      console.log('Notice system status:', window.noticeSystemInitialized);
+    }
+    
+    // 拦截所有站内链接的点击
+    document.addEventListener('click', function(e) {
+      const link = e.target.closest('a');
+      if (link && link.host === window.location.host) {
+        e.preventDefault();
+        fetch(link.href)
+          .then(res => res.text())
+          .then(html => {
+            try {
+              const parser = new DOMParser();
+              const doc = parser.parseFromString(html, 'text/html'); 
+              const newContent = doc.querySelector('#main');
+              if(!newContent) throw new Error('无法找到目标内容');
+              
+              document.querySelector('#main').innerHTML = newContent.innerHTML;
+              history.pushState({}, '', link.href);
+              document.title = doc.title;
+              
+              simulatePageRefresh();
+            } catch(err) {
+              console.error('页面切换失败:', err);
+              window.location.href = link.href;
+            }
+          })
+          .catch(err => {
+            console.error('页面加载失败:', err);
+            window.location.href = link.href;
+          });
+      }
+    });
+
+    // 处理浏览器前进/后退
+    window.onpopstate = function() {
+      fetch(location.href)
+        .then(res => res.text())
+        .then(html => {
+          try {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const newContent = doc.querySelector('#main');
+            if(!newContent) throw new Error('无法找到目标内容');
+            
+            document.querySelector('#main').innerHTML = newContent.innerHTML;
+            document.title = doc.title;
+            
+            simulatePageRefresh();
+          } catch(err) {
+            console.error('页面切换失败:', err);
+            alert('处理抽屉导航失败，请刷新页面');
+            window.location.href = location.href;
+          }
+        })
+        .catch(err => {
+          console.error('页面加载失败:', err);
+          alert('处理抽屉导航失败，请刷新页面');
+          window.location.href = location.href;
+        });
+    };
+  </script>
   <script>if(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches){document.getElementsByTagName("body")[0].className+=" mdui-theme-layout-dark"};</script>
   <script>var a=localStorage.getItem("mdui-drawer-close");if(!a){document.getElementsByTagName("body")[0].className+=" mdui-drawer-body-left"};</script>
   <header id="header" class="mdui-appbar mdui-appbar-fixed mdui-appbar-scroll-hide mdui-appbar-inset">
@@ -242,7 +375,7 @@
   <style>#main article .mdui-card-content .text-center{text-align:center!important}</style>
   <article class="mdui-card mdui-m-b-5">
     <header class="mdui-card-media">
-      <img src="/images/loading.gif" data-original="https://mirror.blog.stevezmt.top/images/random/material-7.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+      <img src="/images/loading.gif" data-original="https://mirror.blog.stevezmt.top/images/random/material-16.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
             <div class="mdui-card-primary-title"><h1 style="margin: 0; font-size: inherit; font-weight: inherit;">几乎超越鸿蒙的完全互联方案</h1></div>
@@ -325,7 +458,7 @@
 <li>类AirDrop<br>电脑上右键文件，选择发送到…，然后选择手机就好了。<br>手机上共享就找到了。<br><img src="/images/loading.gif" data-original="https://mirror.blog.stevezmt.top/images/blog/real-harmony-connect-all/5_compressed.jpg" alt="图片"></li>
 </ol>
 <h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>这个方案的优点是几乎无感知的实现了类似鸿蒙宣传的的完全互联方案，缺点是只能限制在你自己的设备，而且有一定的延迟。<br>屏幕共享和远程控制还是不是很完善，等我研究一段时间。</p>
-<p>   本页面继承自<a target="_blank" rel="noopener" href="https://blog.stevezmt.com/">SteveZMTstudios</a>的博客页面。<br>   基于CC BY-NC-SA 4.0协议转载。</p>
+<p>   本页面继承自<a href="https://blog.stevezmt.top/">SteveZMTstudios</a>的博客页面。<br>   基于CC BY-NC-SA 4.0协议转载。</p>
 
       
         <div class="mdui-m-y-2 mdui-text-center">
