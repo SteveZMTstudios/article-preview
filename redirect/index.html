@@ -75,7 +75,26 @@
     <a href="/" class="mdui-typo-headline">老史尬侃（预览版）</a>
     <div class="mdui-toolbar-spacer"></div>
     <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: '搜索'}"><i class="mdui-icon material-icons" translate="no">search</i></a>
-    <a href="/atom.xml" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: 'RSS'}"><i class="mdui-icon material-icons" translate="no">rss_feed</i></a>
+    <!-- Open RSS Feed --><!--
+    <a href="/atom.xml" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: 'RSS'}"><i class="mdui-icon material-icons" translate="no">rss_feed</i></a> -->
+    <!-- Copy RSS Feed To Clipboard -->
+    
+      <a href="javascript:void(0);" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: 'RSS'}" onclick="copyToClipboard('https://blog.stevezmt.top/atom.xml')">
+        <i class="mdui-icon material-icons" translate="no">rss_feed</i>
+      </a>
+      <script>
+        function copyToClipboard(text) {
+          navigator.clipboard.writeText(text).then(function() {
+            mdui.snackbar({
+              message: '已将RSS订阅链接复制到剪贴板!',
+              position: 'right-top'
+            });
+          }, function(err) {
+            console.error('Could not copy text: ', err);
+          });
+        }
+      </script>
+      
   </div>
 </header>
 <div class="mdui-dialog" id="search">
@@ -120,7 +139,7 @@
       </div>
       <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
         
-        <a class="mdui-ripple sidebar_archives-link" href="/archives/2024/12/">十二月 2024<span class="mdui-ripple sidebar_archives-count">4</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2024/03/">三月 2024<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2024/02/">二月 2024<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2023/10/">十月 2023<span class="mdui-ripple sidebar_archives-count">1</span></a>
+        <a class="mdui-ripple sidebar_archives-link" href="/archives/2024/12/">十二月 2024<span class="mdui-ripple sidebar_archives-count">5</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2024/03/">三月 2024<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2024/02/">二月 2024<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2023/10/">十月 2023<span class="mdui-ripple sidebar_archives-count">1</span></a>
         
       </div>
     </div>
@@ -210,7 +229,7 @@
   <style>#main article .mdui-card-content .text-center{text-align:center!important}</style>
   <article class="mdui-card mdui-m-b-5">
     <header class="mdui-card-media">
-      <img src="/images/loading.gif" data-original="https://mirror.blog.stevezmt.top/images/random/material-16.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+      <img src="/images/loading.gif" data-original="https://mirror.blog.stevezmt.top/images/random/material-7.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
             <div class="mdui-card-primary-title"><h1 style="margin: 0; font-size: inherit; font-weight: inherit;">即将跳转</h1></div>
