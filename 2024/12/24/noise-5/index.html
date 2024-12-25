@@ -85,31 +85,32 @@
       // 触发焦点相关事件
       window.dispatchEvent(new Event('focus'));
       document.hasFocus() && document.activeElement && document.activeElement.focus();
-      try {
-        const drawer = document.querySelector('.mdui-drawer');
-        if (drawer) {
-          const $ = mdui.$;
-          const inst = new mdui.Drawer(drawer);
+
+      //   try {
+      //   const drawer = document.querySelector('.mdui-drawer');
+      //   if (drawer) {
+      //     const $ = mdui.$;
+      //     const inst = new mdui.Drawer(drawer);
           
-          // 检查是否为移动设备
-          const isMobile = window.innerWidth < 1024; // mdui 默认断点
+      //     // 检查是否为移动设备
+      //     const isMobile = window.innerWidth < 1024; // mdui 默认断点
           
-          // 检查本地存储中的状态
-          const isForceClose = localStorage.getItem('mdui-drawer-close');
+      //     // 检查本地存储中的状态
+      //     const isForceClose = localStorage.getItem('mdui-drawer-close');
           
-          if (isMobile || isForceClose) {
-            // 移除所有遮罩
-            $('.mdui-overlay').remove();
-            // 关闭抽屉
-            inst.close(true); // true 表示不显示遮罩
-            // 确保移除drawer-open类
-            $('body').removeClass('mdui-drawer-body-left mdui-drawer-open');
-          }
-        }
-      } catch (err) {
-        console.warn('处理抽屉导航失败:', err);
-        alert('处理抽屉导航失败，请刷新页面');
-      }
+      //     if (isMobile || isForceClose) {
+      //       // 移除所有遮罩
+      //       // $('.mdui-overlay').remove();
+      //       // 关闭抽屉
+      //       inst.close(true); // true 表示不显示遮罩
+      //       // 确保移除drawer-open类
+      //       $('body').removeClass('mdui-drawer-body-left mdui-drawer-open');
+      //     }
+      //   }
+      // } catch (err) {
+      //   console.warn('处理抽屉导航失败:', err);
+      //   alert('处理抽屉导航失败，请刷新页面');
+      // }
       
       // 触发自定义事件用于其他脚本
       window.dispatchEvent(new Event('page:updated'));
@@ -368,7 +369,7 @@
   <style>#main article .mdui-card-content .text-center{text-align:center!important}</style>
   <article class="mdui-card mdui-m-b-5">
     <header class="mdui-card-media">
-      <img src="/images/loading.gif" data-original="https://mirror.blog.stevezmt.top/images/random/material-5.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+      <img src="/images/loading.gif" data-original="https://mirror.blog.stevezmt.top/images/random/material-9.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
             <div class="mdui-card-primary-title"><h1 style="margin: 0; font-size: inherit; font-weight: inherit;">测试堆积页面23</h1></div>
