@@ -171,31 +171,39 @@
     $(document).on('click', 'a', function(e) {
       const link = $(this);
       const href = link.attr('href');
-      console.log('点击链接href:', href);
-      console.log('点击事件e:', e);
-      console.log('链接元素link:', link);
-
-
-      // 跳过空链接、javascript: 协议和纯hash链接
-      if (link.find('.mdui-icon.material-icons').text() === 'search' || !href || typeof href !== 'string' || href.startsWith('javascript:') || href.startsWith('#')) {
-        console.log('跳过链接:', href);
-        return;
-      }
+      const hashIndex = href ? href.indexOf('#') : -1;
       
-      // 检查是否是站内链接，且不需要在新标签页打开
+      // 检查是否只是hash变化
+      if (hashIndex === 0) {
+        // 纯hash链接,使用默认行为
+        return true;
+      }
+
+      // 过滤无效链接
+      if (link.find('.mdui-icon.material-icons').text() === 'search' || 
+          !href || 
+          typeof href !== 'string' || 
+          href.startsWith('javascript:')) {
+        return true;
+      }
+
+      // 检查是否是站内链接
       if (link.prop('host') === window.location.host && 
           !link.attr('target') && 
           link.attr('target') !== '_blank' &&
           !e.ctrlKey && 
           !e.shiftKey && 
           !e.metaKey) {
-          console.log('开始SPA处理:', href);
         
         e.preventDefault();
         showLoading();
         
+        // 提取不含hash的URL部分
+        const targetUrl = hashIndex > -1 ? href.substring(0, hashIndex) : href;
+        const targetHash = hashIndex > -1 ? href.substring(hashIndex) : '';
+        
         $.ajax({
-          url: link.attr('href'),
+          url: targetUrl,
           method: 'GET',
           dataType: 'html',
           success: function(response) {
@@ -210,10 +218,21 @@
               }
               
               $('#main').html($mainContent.html());
-              history.pushState({}, '', link.attr('href'));
+              history.pushState({}, '', href); // 使用完整URL(包含hash)
               document.title = $response.filter('title').text() || document.title;
               
               simulatePageRefresh();
+              
+              // 如果有hash,滚动到对应位置
+              if(targetHash) {
+                const target = $(targetHash);
+                if(target.length) {
+                  $('html, body').animate({
+                    scrollTop: target.offset().top - 60 // 考虑顶部固定导航栏的高度
+                  }, 300);
+                }
+              }
+              
               hideLoading();
             } catch(err) {
               console.error('页面切换失败:', err);
@@ -221,7 +240,7 @@
                 message: '页面切换失败，(switch_error)',
                 timeout: 1500,
                 onClose: function() {
-                  window.location.href = link.attr('href');
+                  window.location.href = href;
                 }
               });
             }
@@ -248,9 +267,9 @@
       const href = location.href;
 
       // 跳过空链接、javascript: 协议和纯hash链接
-      if (link.find('.mdui-icon.material-icons').text() === 'search' || !href || typeof href !== 'string' || href.startsWith('javascript:') || href.startsWith('#')) {
+      if (link.find('.mdui-icon.material-icons').text() === 'search' || !href || typeof href !== 'string' || href.startsWith('javascript:') || href.includes('javascript:') || href.includes('#') ) {
         console.log('跳过链接:', href);
-        return;
+        return false;
       }
       
       $.ajax({
@@ -445,7 +464,7 @@
   <article class="mdui-card mdui-m-b-5">
     <div class="mdui-card-content mdui-typo mdui-ripple" id="notice-container">
       <i class="mdui-icon material-icons mdui-text-color-deep-orange" translate="no">announcement</i> 
-      <!--您正在访问预览版博客主题页面！-->
+      <!--此站点不会再更新博客和有用的实质内容。请参阅<a href='https://blog.stevezmt.top' target='_blank'>blog.stevezmt.top</a>！-->
       
         <span id="random-notice"></span>
         <script>
@@ -584,7 +603,7 @@
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <a href="/2024/12/21/fork-this-theme/">
       <header class="mdui-card-media mdui-ripple">
-        <img src="/images/loading.gif" data-original="/images/random/material-15.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+        <img src="/images/loading.gif" data-original="/images/random/material-7.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
         <div class="mdui-card-media-covered">
           <div class="mdui-card-primary">
             <div class="mdui-card-primary-title">主题复刻指南</div>
@@ -619,7 +638,7 @@
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <a href="/2024/12/24/test2-1/">
       <header class="mdui-card-media mdui-ripple">
-        <img src="/images/loading.gif" data-original="/images/random/material-7.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+        <img src="/images/loading.gif" data-original="/images/random/material-9.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
         <div class="mdui-card-media-covered">
           <div class="mdui-card-primary">
             <div class="mdui-card-primary-title">测试2</div>
@@ -650,7 +669,7 @@
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <a href="/2024/12/24/markdown-test/">
       <header class="mdui-card-media mdui-ripple">
-        <img src="/images/loading.gif" data-original="/images/random/material-15.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+        <img src="/images/loading.gif" data-original="/images/random/material-16.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
         <div class="mdui-card-media-covered">
           <div class="mdui-card-primary">
             <div class="mdui-card-primary-title">Markdown 渲染测试</div>
@@ -681,7 +700,7 @@
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <a href="/2024/12/24/noise-12/">
       <header class="mdui-card-media mdui-ripple">
-        <img src="/images/loading.gif" data-original="/images/random/material-13.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+        <img src="/images/loading.gif" data-original="/images/random/material-6.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
         <div class="mdui-card-media-covered">
           <div class="mdui-card-primary">
             <div class="mdui-card-primary-title">测试堆积页面34</div>
@@ -709,7 +728,7 @@
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <a href="/2024/12/24/noise-11/">
       <header class="mdui-card-media mdui-ripple">
-        <img src="/images/loading.gif" data-original="/images/random/material-6.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+        <img src="/images/loading.gif" data-original="/images/random/material-10.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
         <div class="mdui-card-media-covered">
           <div class="mdui-card-primary">
             <div class="mdui-card-primary-title">测试堆积页面3</div>
@@ -737,7 +756,7 @@
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <a href="/2024/12/24/noise-10/">
       <header class="mdui-card-media mdui-ripple">
-        <img src="/images/loading.gif" data-original="/images/random/material-12.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+        <img src="/images/loading.gif" data-original="/images/random/material-14.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
         <div class="mdui-card-media-covered">
           <div class="mdui-card-primary">
             <div class="mdui-card-primary-title">测试堆积页面2345678</div>
@@ -765,7 +784,7 @@
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <a href="/2024/12/24/noise-9/">
       <header class="mdui-card-media mdui-ripple">
-        <img src="/images/loading.gif" data-original="/images/random/material-9.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+        <img src="/images/loading.gif" data-original="/images/random/material-13.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
         <div class="mdui-card-media-covered">
           <div class="mdui-card-primary">
             <div class="mdui-card-primary-title">测试堆积页面234567</div>
@@ -793,7 +812,7 @@
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <a href="/2024/12/24/noise-8/">
       <header class="mdui-card-media mdui-ripple">
-        <img src="/images/loading.gif" data-original="/images/random/material-16.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+        <img src="/images/loading.gif" data-original="/images/random/material-4.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
         <div class="mdui-card-media-covered">
           <div class="mdui-card-primary">
             <div class="mdui-card-primary-title">测试堆积页面23456</div>
@@ -821,7 +840,7 @@
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <a href="/2024/12/24/noise-7/">
       <header class="mdui-card-media mdui-ripple">
-        <img src="/images/loading.gif" data-original="/images/random/material-12.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+        <img src="/images/loading.gif" data-original="/images/random/material-9.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
         <div class="mdui-card-media-covered">
           <div class="mdui-card-primary">
             <div class="mdui-card-primary-title">测试堆积页面2345</div>
@@ -849,7 +868,7 @@
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <a href="/2024/12/24/noise-6/">
       <header class="mdui-card-media mdui-ripple">
-        <img src="/images/loading.gif" data-original="/images/random/material-8.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+        <img src="/images/loading.gif" data-original="/images/random/material-12.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
         <div class="mdui-card-media-covered">
           <div class="mdui-card-primary">
             <div class="mdui-card-primary-title">测试堆积页面234</div>

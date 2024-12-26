@@ -180,31 +180,39 @@
     $(document).on('click', 'a', function(e) {
       const link = $(this);
       const href = link.attr('href');
-      console.log('点击链接href:', href);
-      console.log('点击事件e:', e);
-      console.log('链接元素link:', link);
-
-
-      // 跳过空链接、javascript: 协议和纯hash链接
-      if (link.find('.mdui-icon.material-icons').text() === 'search' || !href || typeof href !== 'string' || href.startsWith('javascript:') || href.startsWith('#')) {
-        console.log('跳过链接:', href);
-        return;
-      }
+      const hashIndex = href ? href.indexOf('#') : -1;
       
-      // 检查是否是站内链接，且不需要在新标签页打开
+      // 检查是否只是hash变化
+      if (hashIndex === 0) {
+        // 纯hash链接,使用默认行为
+        return true;
+      }
+
+      // 过滤无效链接
+      if (link.find('.mdui-icon.material-icons').text() === 'search' || 
+          !href || 
+          typeof href !== 'string' || 
+          href.startsWith('javascript:')) {
+        return true;
+      }
+
+      // 检查是否是站内链接
       if (link.prop('host') === window.location.host && 
           !link.attr('target') && 
           link.attr('target') !== '_blank' &&
           !e.ctrlKey && 
           !e.shiftKey && 
           !e.metaKey) {
-          console.log('开始SPA处理:', href);
         
         e.preventDefault();
         showLoading();
         
+        // 提取不含hash的URL部分
+        const targetUrl = hashIndex > -1 ? href.substring(0, hashIndex) : href;
+        const targetHash = hashIndex > -1 ? href.substring(hashIndex) : '';
+        
         $.ajax({
-          url: link.attr('href'),
+          url: targetUrl,
           method: 'GET',
           dataType: 'html',
           success: function(response) {
@@ -219,10 +227,21 @@
               }
               
               $('#main').html($mainContent.html());
-              history.pushState({}, '', link.attr('href'));
+              history.pushState({}, '', href); // 使用完整URL(包含hash)
               document.title = $response.filter('title').text() || document.title;
               
               simulatePageRefresh();
+              
+              // 如果有hash,滚动到对应位置
+              if(targetHash) {
+                const target = $(targetHash);
+                if(target.length) {
+                  $('html, body').animate({
+                    scrollTop: target.offset().top - 60 // 考虑顶部固定导航栏的高度
+                  }, 300);
+                }
+              }
+              
               hideLoading();
             } catch(err) {
               console.error('页面切换失败:', err);
@@ -230,7 +249,7 @@
                 message: '页面切换失败，(switch_error)',
                 timeout: 1500,
                 onClose: function() {
-                  window.location.href = link.attr('href');
+                  window.location.href = href;
                 }
               });
             }
@@ -257,9 +276,9 @@
       const href = location.href;
 
       // 跳过空链接、javascript: 协议和纯hash链接
-      if (link.find('.mdui-icon.material-icons').text() === 'search' || !href || typeof href !== 'string' || href.startsWith('javascript:') || href.startsWith('#')) {
+      if (link.find('.mdui-icon.material-icons').text() === 'search' || !href || typeof href !== 'string' || href.startsWith('javascript:') || href.includes('javascript:') || href.includes('#') ) {
         console.log('跳过链接:', href);
-        return;
+        return false;
       }
       
       $.ajax({
