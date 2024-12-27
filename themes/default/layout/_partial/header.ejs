@@ -26,6 +26,14 @@
             });
           }, function(err) {
             console.error('Could not copy text: ', err);
+            mdu.snackbar({
+              message: '复制RSS订阅链接失败!',
+              position: 'right-top',
+              onClick: function() {
+                console.log('复制RSS订阅链接失败!');
+                close();
+              }
+            });
           });
         }
       </script>
