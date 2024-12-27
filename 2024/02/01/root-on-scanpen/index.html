@@ -78,265 +78,181 @@
 <body class="mdui-appbar-with-toolbar mdui-theme-primary-indigo mdui-theme-accent-blue">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script>
-    // 模拟页面刷新时的各种事件
-    function simulatePageRefresh() {
-      // 滚动到顶部
-      window.scrollTo(0, 0);
-      
-      // 触发常见的文档事件
+    function triggerEvents() {
       document.dispatchEvent(new Event('DOMContentLoaded'));
       document.dispatchEvent(new Event('readystatechange'));
-      
-      // 触发窗口事件
       window.dispatchEvent(new Event('load'));
       window.dispatchEvent(new Event('scroll'));
       window.dispatchEvent(new Event('resize'));
       window.dispatchEvent(new Event('orientationchange'));
-
-      // 触发焦点相关事件
       window.dispatchEvent(new Event('focus'));
       document.hasFocus() && document.activeElement && document.activeElement.focus();
+    }
 
-        try {
+    function handleDrawer() {
+      try {
         const drawer = document.querySelector('.mdui-drawer');
         if (drawer) {
           const $ = mdui.$;
           const inst = new mdui.Drawer(drawer);
-          
-          // 检查是否为移动设备
-          const isMobile = window.innerWidth < 1024; // mdui 默认断点
-          
-          // 检查本地存储中的状态
+          const isMobile = window.innerWidth < 1024;
           const isForceClose = localStorage.getItem('mdui-drawer-close');
-          
           if (isMobile || isForceClose) {
-            // 移除所有遮罩
-             $('.mdui-overlay').remove();
-            // 关闭抽屉
-            inst.close(true); // true 表示不显示遮罩
-            // 确保移除drawer-open类
-            //$('body').removeClass('mdui-drawer-body-left mdui-drawer-open');
+            inst.close();
+            $('.mdui-overlay.mdui-overlay-show').remove();
             $('body').css('overflow', 'auto');
-
           }
         }
       } catch (err) {
         console.warn('处理抽屉导航失败:', err);
         alert('处理抽屉导航失败，请刷新页面');
       }
-      
-      // 触发自定义事件用于其他脚本
-      window.dispatchEvent(new Event('page:updated'));
-      // 确保 initNoticeSystem 被正确调用
-      if (typeof window.initNoticeSystem === 'function') {
-        window.initNoticeSystem();
-      }
-        // 重置通知系统状态
-      
-  // 重置通知系统状态
+    }
+
+    function reinitializeNoticeSystem() {
       if (localStorage.getItem('notice-system-initialized') === 'true') {
         const noticeElement = document.getElementById('random-notice');
-        if (noticeElement && 
-            (window.location.pathname === '/' || 
-            window.location.pathname === '/index.html')) {
+        if (noticeElement && (window.location.pathname === '/' || window.location.pathname === '/index.html')) {
           console.log('Reinitializing notice system');
           window.initNoticeSystem();
         }
       }
-    
-    // 在首页时重新初始化通知系统
-    if (window.location.pathname === '/' || 
-        window.location.pathname === '/index.html') {
+      if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+        if (typeof window.initNoticeSystem === 'function') {
+          window.initNoticeSystem();
+        }
+      }
+    }
+
+    function simulatePageRefresh() {
+      window.scrollTo(0, 0);
+      triggerEvents();
+      handleDrawer();
+      window.dispatchEvent(new Event('page:updated'));
       if (typeof window.initNoticeSystem === 'function') {
         window.initNoticeSystem();
       }
-    }
+      reinitializeNoticeSystem();
       console.log('Page type:', window.location.pathname);
       console.log('Notice system status:', window.noticeSystemInitialized);
     }
-    
-    // 显示加载进度条
+
     function showLoading() {
-      // 创建线性进度条
       let progressBar = document.querySelector('.loading-progress');
       if (!progressBar) {
-      progressBar = document.createElement('div');
-      progressBar.className = 'mdui-progress loading-progress';
-      const inner = document.createElement('div'); 
-      inner.className = 'mdui-progress-indeterminate';
-      progressBar.appendChild(inner);
-      // 插入到body顶部
-      document.body.insertBefore(progressBar, document.body.firstChild);
+        progressBar = document.createElement('div');
+        progressBar.className = 'mdui-progress loading-progress';
+        const inner = document.createElement('div');
+        inner.className = 'mdui-progress-indeterminate';
+        progressBar.appendChild(inner);
+        document.body.insertBefore(progressBar, document.body.firstChild);
       }
       progressBar.style.display = 'block';
     }
-    
-    // 隐藏加载进度条
+
     function hideLoading() {
       const progressBar = document.querySelector('.loading-progress');
       if (progressBar) {
-      progressBar.style.display = 'none';
+        progressBar.style.display = 'none';
       }
     }
-    
-    // 拦截所有站内链接的点击
-    $(document).on('click', 'a', function(e) {
-      const link = $(this);
-      const href = link.attr('href');
-      const hashIndex = href ? href.indexOf('#') : -1;
 
-      // 比较当前URL和目标URL
-      const currentPath = window.location.pathname;
-      const targetPath = new URL(href, window.location.origin).pathname;
+    function handleAjaxError(errorType, link, href) {
+      console.error(`页面加载失败: ${errorType}`);
+      mdui.snackbar({
+        message: `页面加载失败，(${errorType})`,
+        timeout: 1500,
+        onClose: function() {
+          window.location.href = href;
+        }
+      });
+    }
 
-      // 检查是否只是hash变化或路径相同
-      if (hashIndex === 0 || currentPath === targetPath) {
-        return true; // 使用默认行为
+    function handleAjaxSuccess(response, href, targetHash) {
+      try {
+        const $response = $(response);
+        const $newContent = $response.find('#main');
+        const $mainContent = $newContent.length ? $newContent : $response.filter('#main');
+        if (!$mainContent.length) {
+          console.error('无法找到内容区域，响应内容:', response);
+          throw new Error('无法找到目标内容');
+        }
+        $('#main').html($mainContent.html());
+        history.pushState({}, '', href);
+        document.title = $response.filter('title').text() || document.title;
+        simulatePageRefresh();
+        if (targetHash) {
+          const target = $(targetHash);
+          if (target.length) {
+            $('html, body').animate({
+              scrollTop: target.offset().top - 60
+            }, 300);
+          }
+        }
+        hideLoading();
+      } catch (err) {
+        handleAjaxError('switch_error', null, href);
       }
+    }
 
-      // 过滤无效链接
-      if (link.find('.mdui-icon.material-icons').text() === 'search' || 
-          !href || 
-          typeof href !== 'string' || 
-          href.startsWith('javascript:')) {
+    function handleLinkClick(e, link, href, hashIndex, currentPath, targetPath) {
+      if (hashIndex === 0 || currentPath === targetPath) {
         return true;
       }
-
-      // 检查是否是站内链接
-      if (link.prop('host') === window.location.host && 
-          !link.attr('target') && 
-          link.attr('target') !== '_blank' &&
-          !e.ctrlKey && 
-          !e.shiftKey && 
-          !e.metaKey) {
-        
+      if (link.find('.mdui-icon.material-icons').text() === 'search' || !href || typeof href !== 'string' || href.startsWith('javascript:')) {
+        return true;
+      }
+      if (link.prop('host') === window.location.host && !link.attr('target') && link.attr('target') !== '_blank' && !e.ctrlKey && !e.shiftKey && !e.metaKey) {
         e.preventDefault();
         showLoading();
-        
-        // 提取不含hash的URL部分
         const targetUrl = hashIndex > -1 ? href.substring(0, hashIndex) : href;
         const targetHash = hashIndex > -1 ? href.substring(hashIndex) : '';
-        
         $.ajax({
           url: targetUrl,
           method: 'GET',
           dataType: 'html',
           success: function(response) {
-            try {
-              const $response = $(response);
-              const $newContent = $response.find('#main');
-              const $mainContent = $newContent.length ? $newContent : $response.filter('#main');
-              
-              if(!$mainContent.length) {
-                console.error('无法找到内容区域，响应内容:', response);
-                throw new Error('无法找到目标内容');
-              }
-              
-              $('#main').html($mainContent.html());
-              history.pushState({}, '', href); // 使用完整URL(包含hash)
-              document.title = $response.filter('title').text() || document.title;
-              
-              simulatePageRefresh();
-              
-              // 如果有hash,滚动到对应位置
-              if(targetHash) {
-                const target = $(targetHash);
-                if(target.length) {
-                  $('html, body').animate({
-                    scrollTop: target.offset().top - 60 // 考虑顶部固定导航栏的高度
-                  }, 300);
-                }
-              }
-              
-              hideLoading();
-            } catch(err) {
-              console.error('页面切换失败:', err);
-              mdui.snackbar({
-                message: '页面切换失败，(switch_error)',
-                timeout: 1500,
-                onClose: function() {
-                  window.location.href = href;
-                }
-              });
-            }
+            handleAjaxSuccess(response, href, targetHash);
           },
           error: function(xhr, status, error) {
-            console.error('页面加载失败:', error);
-            mdui.snackbar({
-              message: '页面加载失败，(ajax_error)',
-              timeout: 1500,
-              onClose: function() {
-                window.location.href = link.attr('href');
-              }
-            });
+            handleAjaxError('ajax_error', link, href);
           }
         });
       }
+    }
+
+    $(document).on('click', 'a', function(e) {
+      const link = $(this);
+      const href = link.attr('href');
+      const hashIndex = href ? href.indexOf('#') : -1;
+      const currentPath = window.location.pathname;
+      const targetPath = new URL(href, window.location.origin).pathname;
+      handleLinkClick(e, link, href, hashIndex, currentPath, targetPath);
     });
 
-    // 处理浏览器前进/后退
     window.onpopstate = function() {
       showLoading();
-      
       const link = $(location);
       const href = location.href;
       const hashIndex = href ? href.indexOf('#') : -1;
-
-      // 比较当前URL和目标URL
       const currentPath = window.location.pathname;
       const targetPath = new URL(href, window.location.origin).pathname;
-
-      // 检查是否只是hash变化或路径相同
       if (hashIndex === 0 || currentPath === targetPath) {
-        return true; // 使用默认行为
+        return true;
       }
-
-      // 跳过空链接、javascript: 协议和纯hash链接
-      if (link.find('.mdui-icon.material-icons').text() === 'search' || !href || typeof href !== 'string' || href.startsWith('javascript:') || href.includes('javascript:') || href.includes('#') ) {
+      if (link.find('.mdui-icon.material-icons').text() === 'search' || !href || typeof href !== 'string' || href.startsWith('javascript:') || href.includes('javascript:') || href.includes('#')) {
         console.log('跳过链接:', href);
         return false;
       }
-      
       $.ajax({
         url: location.href,
         method: 'GET',
         dataType: 'html',
         success: function(response) {
-          try {
-            const $response = $(response);
-            const $newContent = $response.find('#main');
-            const $mainContent = $newContent.length ? $newContent : $response.filter('#main');
-            
-            if(!$mainContent.length) {
-              console.error('无法找到内容区域，响应内容:', response);
-              throw new Error('无法找到目标内容');
-            }
-            
-            $('#main').html($mainContent.html());
-            document.title = $response.filter('title').text() || document.title;
-            
-            simulatePageRefresh();
-            hideLoading();
-          } catch(err) {
-            console.error('页面切换失败:', err);
-            mdui.snackbar({
-              message: '页面切换失败，(br_switch_error)',
-              timeout: 1500,
-              onClose: function() {
-                window.location.href = link.attr('href');
-              }
-            });
-          }
+          handleAjaxSuccess(response, href, null);
         },
         error: function(xhr, status, error) {
-          console.error('页面加载失败:', error);
-          mdui.snackbar({
-            message: '页面加载失败，(br_ajax_error)',
-            timeout: 1500,
-            onClose: function() {
-              window.location.reload();
-            }
-          });
+          handleAjaxError('br_ajax_error', link, href);
         }
       });
     };
