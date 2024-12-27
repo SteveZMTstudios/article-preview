@@ -174,11 +174,14 @@
       const link = $(this);
       const href = link.attr('href');
       const hashIndex = href ? href.indexOf('#') : -1;
-      
-      // 检查是否只是hash变化
-      if (hashIndex === 0) {
-        // 纯hash链接,使用默认行为
-        return true;
+
+      // 比较当前URL和目标URL
+      const currentPath = window.location.pathname;
+      const targetPath = new URL(href, window.location.origin).pathname;
+
+      // 检查是否只是hash变化或路径相同
+      if (hashIndex === 0 || currentPath === targetPath) {
+        return true; // 使用默认行为
       }
 
       // 过滤无效链接
@@ -267,6 +270,16 @@
       
       const link = $(location);
       const href = location.href;
+      const hashIndex = href ? href.indexOf('#') : -1;
+
+      // 比较当前URL和目标URL
+      const currentPath = window.location.pathname;
+      const targetPath = new URL(href, window.location.origin).pathname;
+
+      // 检查是否只是hash变化或路径相同
+      if (hashIndex === 0 || currentPath === targetPath) {
+        return true; // 使用默认行为
+      }
 
       // 跳过空链接、javascript: 协议和纯hash链接
       if (link.find('.mdui-icon.material-icons').text() === 'search' || !href || typeof href !== 'string' || href.startsWith('javascript:') || href.includes('javascript:') || href.includes('#') ) {
@@ -348,6 +361,14 @@
             });
           }, function(err) {
             console.error('Could not copy text: ', err);
+            mdu.snackbar({
+              message: '复制RSS订阅链接失败!',
+              position: 'right-top',
+              onClick: function() {
+                console.log('复制RSS订阅链接失败!');
+                close();
+              }
+            });
           });
         }
       </script>
@@ -486,7 +507,7 @@
   <style>#main article .mdui-card-content .text-center{text-align:center!important}</style>
   <article class="mdui-card mdui-m-b-5">
     <header class="mdui-card-media">
-      <img src="/images/loading.gif" data-original="https://mirror.blog.stevezmt.top/images/random/material-17.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+      <img src="/images/loading.gif" data-original="https://mirror.blog.stevezmt.top/images/random/material-14.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
             <div class="mdui-card-primary-title"><h1 style="margin: 0; font-size: inherit; font-weight: inherit;">测试1</h1></div>
