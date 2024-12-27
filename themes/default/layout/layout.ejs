@@ -36,10 +36,11 @@
           const isForceClose = localStorage.getItem('mdui-drawer-close');
           
           if (isMobile || isForceClose) {
-            // 移除所有遮罩
-             $('.mdui-overlay').remove();
             // 关闭抽屉
-            inst.close(true); // true 表示不显示遮罩
+            inst.close(true); 
+            // 移除特定遮罩
+            $('.mdui-overlay.mdui-overlay-show').remove();
+            
             // 确保移除drawer-open类
             //$('body').removeClass('mdui-drawer-body-left mdui-drawer-open');
             $('body').css('overflow', 'auto');

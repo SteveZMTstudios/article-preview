@@ -1,6 +1,6 @@
 // offline config passed to workbox-build.
 module.exports = {
-    globPatterns: ['**/*.{css,eot,gif,html,ijmap,jpeg,jpg,js,png,svg,ttf,webp,woff,woff2,xml}'],
+    globPatterns: ['**/*.{css,eot,gif,html,ijmap,js,png,svg,ttf,woff,woff2,xml}'],
     //                    ^ok ^ok ^ok ^ok  ^ok   ^ok  ^ok ^ok^ok ^ok ^ok ^ok  ^ok  ^ok   ^ok
 
     // 使用 `find . -type f -name '*.*' | sed 's|.*\.||' | sort | uniq | paste -sd '|'` 捕获
@@ -46,7 +46,7 @@ module.exports = {
         }
             },
             {
-        urlPattern: /^(?!.*sitemap\.xml$).*\.xml$/,
+        urlPattern: /^(?!.*(sitemap|atom)\.xml$).*\.xml$/,
         handler: 'CacheFirst',
         options: {
           cacheName: 'xml-cache',
