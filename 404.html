@@ -262,11 +262,11 @@
     <a href="/atom.xml" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: 'RSS'}"><i class="mdui-icon material-icons" translate="no">rss_feed</i></a> -->
     <!-- Copy RSS Feed To Clipboard -->
     
-      <a href="javascript:void(0);" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: 'RSS'}" onclick="copyToClipboard('https://blog.stevezmt.top/atom.xml')">
+      <a href="javascript:void(0);" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: 'RSS'}" onclick="copyRssToClipboard('https://blog.stevezmt.top/atom.xml')">
         <i class="mdui-icon material-icons" translate="no">rss_feed</i>
       </a>
       <script>
-        function copyToClipboard(text) {
+        function copyRssToClipboard(text) {
           navigator.clipboard.writeText(text).then(function() {
             mdui.snackbar({
               message: '已将RSS订阅链接复制到剪贴板!',
