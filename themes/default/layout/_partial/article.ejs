@@ -142,7 +142,7 @@
                 if (navigator.share) {
                   navigator.share({
                     title: '<%= page.title %>',
-                    text: '<%- page.excerpt %>',
+                    text: '<%- page.excerpt.replace(/(<([^>]+)>)/gi, "") %>',
                     url: '<%- page.permalink %>'
                   }).then(() => {
                     mdui.snackbar({message: '感谢分享！', position: 'top'});
