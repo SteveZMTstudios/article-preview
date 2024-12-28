@@ -9,11 +9,11 @@
     <% if (theme.rss) { %><a href="<%- url_for(theme.rss) %>" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '<%= __('rss_feed') %>'}"><i class="mdui-icon material-icons" translate="no">rss_feed</i></a><% } %> -->
     <!-- Copy RSS Feed To Clipboard -->
     <% if (theme.rss) { %>
-      <a href="javascript:void(0);" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '<%= __('rss_feed') %>'}" onclick="copyToClipboard('<%- config.url %><%- url_for(theme.rss) %>')">
+      <a href="javascript:void(0);" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '<%= __('rss_feed') %>'}" onclick="copyRssToClipboard('<%- config.url %><%- url_for(theme.rss) %>')">
         <i class="mdui-icon material-icons" translate="no">rss_feed</i>
       </a>
       <script>
-        function copyToClipboard(text) {
+        function copyRssToClipboard(text) {
           navigator.clipboard.writeText(text).then(function() {
             mdui.snackbar({
               message: '已将RSS订阅链接复制到剪贴板!',
