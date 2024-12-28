@@ -268,20 +268,12 @@
               message: '已将RSS订阅链接复制到剪贴板!',
               position: 'right-top',
               buttonText: '好',
-              onClick: function() {
-                console.log('RSS订阅链接已复制到剪贴板!');
-                close();
-              }
             });
           }, function(err) {
             console.error('Could not copy text: ', err);
             mdu.snackbar({
               message: '复制RSS订阅链接失败!',
               position: 'right-top',
-              onClick: function() {
-                console.log('复制RSS订阅链接失败!');
-                close();
-              }
             });
           });
         }
@@ -309,11 +301,40 @@
         <div class="mdui-grid-tile-title">Steve ZMT</div>
         <div class="mdui-grid-tile-subtitle"><i class="mdui-icon material-icons" translate="no">art_track</i>测试分支，不代表主线版本</div>
       </div>
+      <!--
       
         <div class="mdui-grid-tile-buttons">
           <a href="mailto:admin@stevezmt.top" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: 'admin@stevezmt.top'}"><i class="mdui-icon material-icons" translate="no">email</i></a>
         </div>
+       
+      -->
       
+        <div class="mdui-grid-tile-buttons">
+          <a href="javascript:void(0);" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: 'admin@stevezmt.top'}" onclick="copyEmailToClipboard('admin@stevezmt.top')">
+            <i class="mdui-icon material-icons" translate="no">email</i>
+          </a>
+        </div>
+        <script>
+          function copyEmailToClipboard(email) {
+            navigator.clipboard.writeText(email).then(function() {
+              mdui.snackbar({
+                message: '已将邮箱地址复制到剪贴板!',
+                position: 'left-top',
+                buttonText: '写邮件',
+                onButtonClick: function(){
+                  window.location.href = 'mailto:' + 'admin@stevezmt.top';
+                }
+              });
+            }, function(err) {
+              console.error('Could not copy text: ', err);
+              mdui.snackbar({
+                message: '复制邮箱地址失败!',
+                position: 'right-top',
+              });
+            });
+          }
+        </script>
+
     </div>
   </div>
 
@@ -401,7 +422,7 @@
   <article class="mdui-card mdui-m-b-5">
     <div class="mdui-card-content mdui-typo mdui-ripple" id="notice-container">
       <i class="mdui-icon material-icons mdui-text-color-deep-orange" translate="no">announcement</i> 
-      <!--我们建议想要复刻该主题布局的用户采用这个页面上的框架。-->
+      <!--你可以这么理解：该站点仅用于展示外观和元素。-->
       
         <span id="random-notice"></span>
         <script>
@@ -540,7 +561,7 @@
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <a href="/2024/12/21/fork-this-theme/">
       <header class="mdui-card-media mdui-ripple">
-        <img src="/images/loading.gif" data-original="/images/random/material-2.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+        <img src="/images/loading.gif" data-original="/images/random/material-10.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
         <div class="mdui-card-media-covered">
           <div class="mdui-card-primary">
             <div class="mdui-card-primary-title">主题复刻指南</div>
@@ -606,7 +627,7 @@
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <a href="/2024/12/24/markdown-test/">
       <header class="mdui-card-media mdui-ripple">
-        <img src="/images/loading.gif" data-original="/images/random/material-8.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+        <img src="/images/loading.gif" data-original="/images/random/material-14.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
         <div class="mdui-card-media-covered">
           <div class="mdui-card-primary">
             <div class="mdui-card-primary-title">Markdown 渲染测试</div>
@@ -637,7 +658,7 @@
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <a href="/2024/12/24/noise-12/">
       <header class="mdui-card-media mdui-ripple">
-        <img src="/images/loading.gif" data-original="/images/random/material-1.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+        <img src="/images/loading.gif" data-original="/images/random/material-17.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
         <div class="mdui-card-media-covered">
           <div class="mdui-card-primary">
             <div class="mdui-card-primary-title">测试堆积页面34</div>
@@ -665,7 +686,7 @@
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <a href="/2024/12/24/noise-11/">
       <header class="mdui-card-media mdui-ripple">
-        <img src="/images/loading.gif" data-original="/images/random/material-9.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+        <img src="/images/loading.gif" data-original="/images/random/material-12.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
         <div class="mdui-card-media-covered">
           <div class="mdui-card-primary">
             <div class="mdui-card-primary-title">测试堆积页面3</div>
@@ -693,7 +714,7 @@
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <a href="/2024/12/24/noise-10/">
       <header class="mdui-card-media mdui-ripple">
-        <img src="/images/loading.gif" data-original="/images/random/material-7.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+        <img src="/images/loading.gif" data-original="/images/random/material-14.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
         <div class="mdui-card-media-covered">
           <div class="mdui-card-primary">
             <div class="mdui-card-primary-title">测试堆积页面2345678</div>
@@ -721,7 +742,7 @@
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <a href="/2024/12/24/noise-9/">
       <header class="mdui-card-media mdui-ripple">
-        <img src="/images/loading.gif" data-original="/images/random/material-6.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+        <img src="/images/loading.gif" data-original="/images/random/material-19.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
         <div class="mdui-card-media-covered">
           <div class="mdui-card-primary">
             <div class="mdui-card-primary-title">测试堆积页面234567</div>
@@ -749,7 +770,7 @@
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <a href="/2024/12/24/noise-8/">
       <header class="mdui-card-media mdui-ripple">
-        <img src="/images/loading.gif" data-original="/images/random/material-11.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+        <img src="/images/loading.gif" data-original="/images/random/material-12.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
         <div class="mdui-card-media-covered">
           <div class="mdui-card-primary">
             <div class="mdui-card-primary-title">测试堆积页面23456</div>
@@ -805,7 +826,7 @@
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <a href="/2024/12/24/noise-6/">
       <header class="mdui-card-media mdui-ripple">
-        <img src="/images/loading.gif" data-original="/images/random/material-12.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+        <img src="/images/loading.gif" data-original="/images/random/material-4.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
         <div class="mdui-card-media-covered">
           <div class="mdui-card-primary">
             <div class="mdui-card-primary-title">测试堆积页面234</div>
