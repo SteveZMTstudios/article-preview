@@ -18,16 +18,6 @@ notice:
   - "在<a target='_blank' href='https://github.com/SteveZMTstudios/article-preview/'>Github Repo</a>给我们star⭐！"
   - "当某项新功能已经提交但是迟迟看不到结果，试试清除浏览数据吧！"
 
-
-pwa:
-  enable: true
-  manifest: /img/pwa/manifest.json
-  apple_touch_icon: /img/pwa/apple-touch-icon.png
-  favicon_32_32: /img/pwa/32.png
-  favicon_16_16: /img/pwa/16.png
-  mask_icon: /img/pwa/safari-pinned-tab.svg
-
-
 favicon: /images/favicon.png
 banner: /images/banner.png
 avatar: /images/avatar.jpg@128x128.jpg
