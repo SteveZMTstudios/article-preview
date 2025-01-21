@@ -164,14 +164,43 @@
         const $response = $(response);
         const $newContent = $response.find('#main');
         const $mainContent = $newContent.length ? $newContent : $response.filter('#main');
+        
         if (!$mainContent.length) {
           console.error('无法找到内容区域，响应内容:', response);
           throw new Error('无法找到目标内容');
         }
+    
+        // 更新页面内容
         $('#main').html($mainContent.html());
         history.pushState({}, '', href);
         document.title = $response.filter('title').text() || document.title;
+    
+        // 重新初始化各项功能
         simulatePageRefresh();
+        
+        // 重新初始化评论系统
+        if (typeof DISQUS !== 'undefined') {
+          DISQUS.reset({reload: true});
+        }
+        
+        // 重新初始化不蒜子计数器
+        if (typeof busuanzi !== 'undefined') {
+          busuanzi.fetch();
+        }
+    
+        // 重新初始化外链处理
+        const links = document.querySelectorAll('.mdui-card-content a');
+        links.forEach(link => {
+          const href = link.getAttribute('href');
+          if (href && href.startsWith('http') && 
+              !href.includes('blog.stevezmt.top') && 
+              !href.includes('stevezmt.top') && 
+              !href.includes('localhost')) {
+            link.href = `/redirect?goto=${encodeURIComponent(href)}`;
+          }
+        });
+    
+        // 处理锚点滚动
         if (targetHash) {
           const target = $(targetHash);
           if (target.length) {
@@ -180,9 +209,12 @@
             }, 300);
           }
         }
+        
         hideLoading();
+    
       } catch (err) {
-        handleAjaxError('页面切换异常', null, href);
+        console.error('页面渲染异常:', err);
+        handleAjaxError('页面渲染异常', null, href);
       }
     }
 
@@ -421,7 +453,8 @@
   </div>
 </aside>
 
-  <main id="main" class="mdui-m-t-5 fadeIn animated"><script> // Redirect external links
+  <main id="main" class="mdui-m-t-5 fadeIn animated"><!--
+<script> // Redirect external links
   document.addEventListener('DOMContentLoaded', function() {
     const links = document.querySelectorAll('.mdui-card-content a');
     
@@ -437,6 +470,9 @@
   });
   </script>
 
+moved to the bottom -->
+
+
 
   <style>
     #tagcloud a{margin:0 8px;padding:8px 0;line-height:40px;white-space:nowrap;text-decoration:none;opacity:.87;-webkit-transition:all .2s cubic-bezier(.4,0,.2,1);-o-transition:all .2s cubic-bezier(.4,0,.2,1);transition:all .2s cubic-bezier(.4,0,.2,1)}
@@ -450,6 +486,24 @@
 
 
 
+<script>
+  // 在页面加载完成后处理外链
+  document.addEventListener('DOMContentLoaded', initExternalLinks);
+  
+  // 定义外链处理函数便于重用
+  function initExternalLinks() {
+    const links = document.querySelectorAll('.mdui-card-content a');
+    links.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('http') && 
+          !href.includes('blog.stevezmt.top') && 
+          !href.includes('stevezmt.top') && 
+          !href.includes('localhost')) {
+        link.href = `/redirect?goto=${encodeURIComponent(href)}`;
+      }
+    });
+  }
+  </script>
 
 </main>
   <footer id="footer" class="mdui-m-t-5 mdui-p-y-3 mdui-color-theme">
