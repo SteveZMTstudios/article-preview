@@ -146,7 +146,7 @@ moved to the bottom -->
                 if (navigator.share) {
                   navigator.share({
                     title: '<%= page.title %>',
-                    text: '<%- page.excerpt.replace(/(<([^>]+)>)/gi, "") %>',
+                    text: '来自 老史尬侃 的文章, 作者:' + '<%= page.author || config.author %>',
                     url: '<%- page.permalink %>'
                   }).then(() => {
                     mdui.snackbar({message: '感谢分享！', position: 'top'});
