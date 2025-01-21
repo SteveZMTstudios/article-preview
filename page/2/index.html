@@ -162,43 +162,14 @@
         const $response = $(response);
         const $newContent = $response.find('#main');
         const $mainContent = $newContent.length ? $newContent : $response.filter('#main');
-        
         if (!$mainContent.length) {
           console.error('无法找到内容区域，响应内容:', response);
           throw new Error('无法找到目标内容');
         }
-    
-        // 更新页面内容
         $('#main').html($mainContent.html());
         history.pushState({}, '', href);
         document.title = $response.filter('title').text() || document.title;
-    
-        // 重新初始化各项功能
         simulatePageRefresh();
-        
-        // 重新初始化评论系统
-        if (typeof DISQUS !== 'undefined') {
-          DISQUS.reset({reload: true});
-        }
-        
-        // 重新初始化不蒜子计数器
-        if (typeof busuanzi !== 'undefined') {
-          busuanzi.fetch();
-        }
-    
-        // 重新初始化外链处理
-        const links = document.querySelectorAll('.mdui-card-content a');
-        links.forEach(link => {
-          const href = link.getAttribute('href');
-          if (href && href.startsWith('http') && 
-              !href.includes('blog.stevezmt.top') && 
-              !href.includes('stevezmt.top') && 
-              !href.includes('localhost')) {
-            link.href = `/redirect?goto=${encodeURIComponent(href)}`;
-          }
-        });
-    
-        // 处理锚点滚动
         if (targetHash) {
           const target = $(targetHash);
           if (target.length) {
@@ -207,12 +178,22 @@
             }, 300);
           }
         }
-        
         hideLoading();
-    
+
+        const scripts = $mainContent.find('script');
+        scripts.each(function() {
+          const script = document.createElement('script');
+          script.type = 'text/javascript';
+          if (this.src) {
+            script.src = this.src;
+          } else {
+            script.text = this.innerHTML;
+          }
+          document.head.appendChild(script);
+          document.head.removeChild(script);
+        });
       } catch (err) {
-        console.error('页面渲染异常:', err);
-        handleAjaxError('页面渲染异常', null, href);
+        handleAjaxError('页面切换异常', null, href);
       }
     }
 
@@ -459,7 +440,7 @@
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <a href="/2024/12/24/noise-5/">
       <header class="mdui-card-media mdui-ripple">
-        <img src="/images/loading.gif" data-original="/images/random/material-5.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+        <img src="/images/loading.gif" data-original="/images/random/material-17.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
         <div class="mdui-card-media-covered">
           <div class="mdui-card-primary">
             <div class="mdui-card-primary-title">测试堆积页面23</div>
@@ -487,7 +468,7 @@
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <a href="/2024/12/24/noise-4/">
       <header class="mdui-card-media mdui-ripple">
-        <img src="/images/loading.gif" data-original="/images/random/material-9.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+        <img src="/images/loading.gif" data-original="/images/random/material-13.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
         <div class="mdui-card-media-covered">
           <div class="mdui-card-primary">
             <div class="mdui-card-primary-title">测试堆积页面2</div>
@@ -515,7 +496,7 @@
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <a href="/2024/12/24/noise-3/">
       <header class="mdui-card-media mdui-ripple">
-        <img src="/images/loading.gif" data-original="/images/random/material-4.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+        <img src="/images/loading.gif" data-original="/images/random/material-17.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
         <div class="mdui-card-media-covered">
           <div class="mdui-card-primary">
             <div class="mdui-card-primary-title">测试堆积页面</div>
@@ -543,7 +524,7 @@
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <a href="/2024/12/24/noise-2/">
       <header class="mdui-card-media mdui-ripple">
-        <img src="/images/loading.gif" data-original="/images/random/material-15.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+        <img src="/images/loading.gif" data-original="/images/random/material-7.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
         <div class="mdui-card-media-covered">
           <div class="mdui-card-primary">
             <div class="mdui-card-primary-title">测试堆积页面</div>
@@ -599,7 +580,7 @@
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <a href="/2024/12/21/noise/">
       <header class="mdui-card-media mdui-ripple">
-        <img src="/images/loading.gif" data-original="/images/random/material-3.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+        <img src="/images/loading.gif" data-original="/images/random/material-18.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
         <div class="mdui-card-media-covered">
           <div class="mdui-card-primary">
             <div class="mdui-card-primary-title">测试1</div>
@@ -627,7 +608,7 @@ foo bar boo……
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <a href="/2024/12/03/real-harmony-connect-all/">
       <header class="mdui-card-media mdui-ripple">
-        <img src="/images/loading.gif" data-original="/images/random/material-5.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+        <img src="/images/loading.gif" data-original="/images/random/material-18.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
         <div class="mdui-card-media-covered">
           <div class="mdui-card-primary">
             <div class="mdui-card-primary-title">几乎超越鸿蒙的完全互联方案</div>
@@ -659,7 +640,7 @@ foo bar boo……
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <a href="/2024/12/01/talk-about-x-ai/">
       <header class="mdui-card-media mdui-ripple">
-        <img src="/images/loading.gif" data-original="/images/random/material-4.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
+        <img src="/images/loading.gif" data-original="/images/random/material-6.png" style="max-height: 240px; width: 100%; object-fit: cover;" alt="thumbnails">
         <div class="mdui-card-media-covered">
           <div class="mdui-card-primary">
             <div class="mdui-card-primary-title">关于 x.ai 的一些看法</div>
