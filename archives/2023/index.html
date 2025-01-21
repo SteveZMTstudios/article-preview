@@ -149,7 +149,8 @@
       console.error(`页面加载失败: ${errorType}`);
       mdui.snackbar({
         message: `页面加载失败，(${errorType})`,
-        timeout: 1500,
+        timeout: 10000,
+        buttonText: '重载',
         onClose: function() {
           window.location.href = href;
         }
@@ -179,7 +180,7 @@
         }
         hideLoading();
       } catch (err) {
-        handleAjaxError('switch_error', null, href);
+        handleAjaxError('页面切换异常', null, href);
       }
     }
 
@@ -203,7 +204,7 @@
             handleAjaxSuccess(response, href, targetHash);
           },
           error: function(xhr, status, error) {
-            handleAjaxError('ajax_error', link, href);
+            handleAjaxError('ajax处理异常', link, href);
           }
         });
       }
@@ -240,7 +241,7 @@
           handleAjaxSuccess(response, href, null);
         },
         error: function(xhr, status, error) {
-          handleAjaxError('br_ajax_error', link, href);
+          handleAjaxError('浏览器导致ajax异常', link, href);
         }
       });
     };
