@@ -86,7 +86,7 @@ busuanzi:
   page: true
   busuanzi_js: //busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js
 qrcode:
-  caption: 发送到手机
+  caption: 使用其他设备扫描
   use: plugin
   
 donate:
