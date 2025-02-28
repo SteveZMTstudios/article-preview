@@ -31,10 +31,11 @@
         }
       } catch (err) {
 
-        window.location.href = href;
-        //TODO: fix this when go to index
-        console.warn('处理抽屉导航失败:', err);
-        alert('处理抽屉导航失败，请刷新页面');
+        
+        // TODO: fix this when go to index
+
+        // console.warn('处理抽屉导航失败:', err);
+        // alert('处理抽屉导航失败，请刷新页面');
       }
     }
 
@@ -91,10 +92,12 @@
       
       window.location.href = href;
       // TODO: fix this when go to index
+      
       console.error(`页面加载失败: ${errorType}`);
+
       mdui.snackbar({
         message: `页面加载失败，(${errorType})`,
-        timeout: 50000,
+        timeout: 100,
         buttonText: '重载',
         onClose: function() {
           window.location.href = href;
