@@ -42,7 +42,7 @@ manifest-src 'self';">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img.shields.io/badge/_Error-404_Not_Found-red?logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjgiIGhlaWdodD0iMTI4IiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwYXRoIGZpbGw9IiNmZmZmZmYiIGQ9Ik0xMyAxNGgtMlY5aDJtMCA5aC0ydi0yaDJNMSAyMWgyMkwxMiAyeiIvPjwvc3ZnPg==">
 <meta property="article:published_time" content="1970-01-01T00:00:00.000Z">
-<meta property="article:modified_time" content="2025-01-21T02:35:20.250Z">
+<meta property="article:modified_time" content="2025-03-01T05:56:05.164Z">
 <meta property="article:author" content="Steve ZMT">
 <meta property="article:tag" content="blog">
 <meta property="article:tag" content="博客">
@@ -540,7 +540,7 @@ moved to the bottom -->
                 if (navigator.share) {
                   navigator.share({
                     title: '找不到页面',
-                    text: '',
+                    text: '来自 老史尬侃 的文章, 作者:' + 'Steve ZMT',
                     url: 'https://blog.stevezmt.top/404.html'
                   }).then(() => {
                     mdui.snackbar({message: '感谢分享！', position: 'top'});
@@ -629,13 +629,15 @@ moved to the bottom -->
 <li>稍后重新加载此网页。</li>
 <li>在<a target="_blank" rel="noopener" href="https://web.archive.org/web/20240000000000*/blog.stevezmt.top">Wayback Machine</a>中查找此页面的存档副本。</li>
 <li>使用搜索引擎搜索你在找的关键字。<div class="mdui-textfield mdui-textfield-expandable">
-  <button class="mdui-textfield-icon mdui-btn mdui-btn-icon" onclick="searchGoogle()">
-      <i class="mdui-icon material-icons">search</i>
-  </button>
-  <input class="mdui-textfield-input" type="text" id="google-search" placeholder="谷歌搜索..." onkeydown="if(event.key === 'Enter') searchGoogle()" onfocus="this.parentElement.classList.add('mdui-hoverable')" onblur="this.parentElement.classList.remove('mdui-hoverable')"/>
-  <button class="mdui-textfield-close mdui-btn mdui-btn-icon">
-      <i class="mdui-icon material-icons">close</i>
-  </button>
+  <div class="mdui-textfield mdui-textfield-expandable">
+      <button class="mdui-textfield-icon mdui-btn mdui-btn-icon mdui-btn-small" onclick="searchGoogle()">
+          <i class="mdui-icon material-icons">search</i>
+      </button>
+      <input class="mdui-textfield-input mdui-textfield-input-small" type="text" id="google-search" placeholder="谷歌搜索..." onkeydown="if(event.key === 'Enter') searchGoogle()" onfocus="this.parentElement.classList.add('mdui-hoverable')" onblur="this.parentElement.classList.remove('mdui-hoverable')"/>
+      <button class="mdui-textfield-close mdui-btn mdui-btn-icon mdui-btn-small">
+          <i class="mdui-icon material-icons">close</i>
+      </button>
+  </div>
 </div>
 <script>
   function searchGoogle() {
