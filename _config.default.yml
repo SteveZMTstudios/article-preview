@@ -23,22 +23,24 @@ banner: /images/banner.png
 avatar: /images/avatar.jpg@128x128.jpg
 rss: /atom.xml
 
-email: admin@stevezmt.top
+
+# edit as yours
+email: someone@example.com
 sns:
-  twitter:
-  facebook:
-  google_plus:
-  steam: https://steamcommunity.com/id/stevezmt/
-  weibo:
-  instagram:
-  tumblr:
+  twitter: https://example.com/
+  facebook: https://example.com/
+  google_plus: https://example.com/
+  steam: https://steamcommunity.com/id/example
+  weibo: https://example.com/
+  instagram: https://example.com/
+  tumblr: https://example.com/
   github: https://github.com/stevezmtstudios/
-  linkedin:
-  zhihu: https://www.zhihu.com/people/zhang-xian-sheng-70-9
-  douban:
-  qq: tencent://message/?uin=3579946866&Menu=yes
-  wechat:
-  bilibili: https://space.bilibili.com/474130186
+  linkedin: https://example.com/
+  zhihu: https://www.zhihu.com/people/example
+  douban: https://example.com/
+  qq: tencent://message/?uin=10000&Menu=yes
+  wechat: https://example.com/
+  bilibili: https://space.bilibili.com/example
   custom: https://stevezmt.top/
 
 open_graph:
