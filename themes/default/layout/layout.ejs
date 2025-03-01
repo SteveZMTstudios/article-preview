@@ -90,9 +90,9 @@
     function handleAjaxError(errorType, link, href) {
       // descript it to debug error
       
-      window.location.href = href;
+      // window.location.href = href;
       // TODO: fix this when go to index
-      
+      /*
       console.error(`页面加载失败: ${errorType}`);
 
       mdui.snackbar({
@@ -103,6 +103,8 @@
           window.location.href = href;
         }
       });
+      */
+      return true;
     }
 
     function handleAjaxSuccess(response, href, targetHash) {
