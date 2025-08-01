@@ -12,40 +12,28 @@
 
 
 ###  TODO 任务清单
-#### 待合并
+- [ ] 迁移到 [MkDocs](https://github.com/squidfunk/mkdocs-material)
+- [ ] 移除 Hexo 框架
+
+#### ~~待合并~~
  -  ~~https://www.voidking.com/dev-hexo-gulp/~~
  -  ~~https://github.com/Lete114/hexo-minify~~
        ~~压缩博客体积~~
         - 存在漏洞，废弃
 
-#### 待修复
+#### ~~待修复~~
 
-#### 待添加
- - [x] 评论系统
- - [x] 代码高亮
- - [x] 代码行号
- - [ ] 代码复制
- - [x] 代码折叠
- - [x] 代码搜索
+#### ~~待添加~~
+ - [x] ~~评论系统~~
+ - [x] ~~代码高亮~~
+ - [x] ~~代码行号~~
+ - [ ] ~~代码复制~~
+ - [x] ~~代码折叠~~
+ - [x] ~~代码搜索~~
 
 
 
 #### 待优化
- - [ ] 优化性能分数
-   - [x] https://vrast.cn/posts/38026/
- - [x] 优化busuanzi的加载
-   - [x] use defer
- - [x] 优化SEO(lighthouse:92)
- - [x] 优化最佳做法
-
-#### 待进一步处理
- - [ ] 重做PWA图标
-   - [ ] https://web.dev/articles/maskable-icon
-
-#### 待废弃
- - [x] https://www.voidking.com/dev-hexo-gulp/
-       压缩博客体积
-       - 存在漏洞，将废弃
 
 #### 待测试
 
