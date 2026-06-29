@@ -30,7 +30,15 @@ manifest-src 'self';">
 
   
   <title>归档: 2024 | 老史尬侃（预览版）</title>
-    <meta http-equiv="refresh" content="0; url=https://blog.stevezmt.top/" />
+    <script>
+(function() {
+  var fullPath = window.location.pathname + window.location.search + window.location.hash;
+  var targetUrl = 'https://blog.stevezmt.top' + fullPath;
+  window.location.replace(targetUrl);
+  window.location.reload();
+})();
+</script>
+<meta http-equiv="refresh" content="0; url=https://blog.stevezmt.top/" />
 
 
   <link rel="shortcut icon" href="/images/favicon.png">

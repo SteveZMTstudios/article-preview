@@ -30,7 +30,15 @@ manifest-src 'self';">
 
   
   <title>几乎超越鸿蒙的完全互联方案 | 老史尬侃（预览版）</title>
-
+    <script>
+(function() {
+  var fullPath = window.location.pathname + window.location.search + window.location.hash;
+  var targetUrl = 'https://blog.stevezmt.top' + fullPath;
+  window.location.replace(targetUrl);
+  window.location.reload();
+})();
+</script>
+<meta http-equiv="refresh" content="0; url=https://blog.stevezmt.top/" />
   <link rel="shortcut icon" href="/images/favicon.png">
   <link rel="alternate" href="/atom.xml" title="老史尬侃（预览版）" type="application/atom+xml">
   <meta name="description" content="可能是这几天吃太饱了，花了一个周末，折腾了一个自己个人还算满意的全平台互联方案。 实现效果几乎可以完全满足我个人远程工作的需要，而且绝大部分组件都是开源，几乎无感知的实现了类似鸿蒙宣传的的完全互联方案。 但是好像目前只能限制在你自己的设备… 总体效果在我手边的两台安卓手机，一台安卓词典笔，一台安装了linux &amp; KDE Plasma的老旧笔记本上实现了：    - 随时随地的控制媒体设备">
