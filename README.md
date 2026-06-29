@@ -1,6 +1,8 @@
-博客地址：[blog-preview.stevezmt.top](https://blog-preview.stevezmt.top)
+博客地址：[blog.stevezmt.top](https://blog.stevezmt.top)
 
-此为预览分支，部分功能无法使用或不可用。
+主分支已经渐进增强得足够好了，以后更改将直接部署到 [SteveZMTstudios/articles](https://github.com/SteveZMTstudios/articles)
+
+此为先前为了试验的预览分支，将不再维护。
 
 博客原始代码仓库添加了一些不能被广泛引用的特性。若您希望套用博客主题，请参阅[博客迁移指南](https://blog.stevezmt.top/2024/12/21/fork-this-theme/)。
 
